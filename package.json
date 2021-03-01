@@ -1,0 +1,24 @@
+{
+  "name": "last-the-night",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/colineckert/last-the-night.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/colineckert/last-the-night/issues"
+  },
+  "homepage": "https://github.com/colineckert/last-the-night#readme",
+  "dependencies": {
+    "webpack": "^5.24.2",
+    "webpack-cli": "^4.5.0"
+  }
+}
