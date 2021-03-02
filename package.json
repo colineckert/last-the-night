@@ -1,14 +1,25 @@
 {
   "name": "last-the-night",
   "version": "1.0.0",
-  "description": "Last the Night is a top-down shooter-like game where light is your only weapon.",
+  "description": "",
   "main": "index.js",
   "directories": {
     "doc": "docs"
   },
+  "dependencies": {
+    "@babel/core": "^7.13.8",
+    "@babel/preset-env": "^7.13.9",
+    "babel-loader": "^8.2.2",
+    "body-parser": "^1.19.0",
+    "install": "^0.13.0",
+    "npm": "^7.6.0",
+    "webpack": "^4.46.0",
+    "webpack-cli": "^4.5.0"
+  },
+  "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "webpack": "webpack --watch --mode=development"
+    "webpack": "webpack --mode=development --watch"
   },
   "repository": {
     "type": "git",
@@ -20,9 +31,5 @@
   "bugs": {
     "url": "https://github.com/colineckert/last-the-night/issues"
   },
-  "homepage": "https://github.com/colineckert/last-the-night#readme",
-  "devDependencies": {
-    "webpack": "^5.24.2",
-    "webpack-cli": "^4.5.0"
-  }
+  "homepage": "https://github.com/colineckert/last-the-night#readme"
 }
