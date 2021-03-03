@@ -45,41 +45,30 @@ class GameView {
   }
 
   start(){
-    // bind key handlers
+    //bind key handlers
     this.bindKeyHandlers();
     this.dirKeys();
-    
-    // start animation
-    requestAnimationFrame(this.step.bind(this));
+    this.lastTime = 0;
+
+    //start the animation
+    requestAnimationFrame(this.animate.bind(this));
   }
 
-  step() {
-    debugger
-    this.dirKeys();
-    this.ctx.fillStyle = "#ccc";
-    this.ctx.fillRect(0, 0, this.canvas.width, this.canvas.height);
+  animate(time) {
+    // this.dirKeys();
+    // this.ctx.fillStyle = "#222";
+    // this.ctx.fillRect(0, 0, this.canvas.width, this.canvas.height);
 
-    // this.game.step();
+    const timeDelta = time - this.lastTime;
+
+    // this.game.step(timeDelta);
     this.game.draw(this.ctx);
-    
-    //request another animation or break if player won / lost
-    // if (this.playerEscaped()){
-    //   if (this.level <= 5) {
-    //     this.passCallback();
-    //   } else {
-    //     this.winningCallback();
-    //   }
-    // } else if (this.playerKilled()){
-    //   this.losingCallback();
-    // } else {
-    //   requestAnimationFrame(this.step.bind(this));
-    // }
+    this.lastTime = time;
 
-    requestAnimationFrame(this.step.bind(this));
+    // every call to animate requests causes another call to animate
+    requestAnimationFrame(this.animate.bind(this));
   }
-
-
-}
+};
 
 GameView.KEYS = {};
 

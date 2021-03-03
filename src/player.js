@@ -12,6 +12,13 @@ class Player {
     ctx.arc(this.pos.x, this.pos.y, 4, 0, 2 * Math.PI);
     ctx.fill();
   }
+
+  move(dir) {
+    const newX = this.pos.x + (Player.MOVES[dir][0] * Player.SPEED);
+    const newY = this.pos.y + (Player.MOVES[dir][1] * Player.SPEED);
+    const newCoord = new Coord(newX, newY);
+  }
+
 };
 
 // const rt2oTwo = Math.sqrt(2)/2;
