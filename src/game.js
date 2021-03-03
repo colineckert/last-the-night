@@ -10,7 +10,6 @@ class Game {
     this.walls = this.level["walls"]
                   .map(row => {
                     return row.map((scalar, index) => {
-                      // debugger
                       if (index % 2 === 0) {
                         return scalar * canvas.width;
                       } else {
@@ -41,6 +40,17 @@ class Game {
 
     this.walls.forEach(wall => wall.draw(ctx));
   };
+
+  collidingWithWall(coord){
+    return this.walls.some( wall => {
+      return !(
+        (coord.x < wall.topLeft.x)
+          || (coord.x > wall.bottomRight.x)
+          || (coord.y < wall.topLeft.y)
+          || (coord.y > wall.bottomRight.y)
+      );
+    });
+  }
 }
 
 Game.BG_COLOR = "#000";
