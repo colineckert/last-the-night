@@ -2,6 +2,7 @@ const Coord = require('./coord');
 const Player = require('./player');
 const Map = require('./map');
 const Wall = require('./wall');
+const Light = require('./light');
 
 class Game {
   constructor(canvas, level) {
@@ -23,6 +24,7 @@ class Game {
       (this.level.playerStart.y * canvas.height),
       this
       );
+    // window.light = this.light = new Light();
   }
 
   allObjects() {

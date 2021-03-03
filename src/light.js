@@ -1,8 +1,13 @@
 
 class Light {
   constructor() {
+
   }
   
+  draw(ctx){
+    ctx.fillStyle = "#ffffe0";
+    ctx.fillRect(this.pos.x, this.pos.y, 21, 7);
+  }
   // aim() {
 
   //   let aim = point_direction(x,y,mouse_x,mouse_y) //aim is towards the mouse
@@ -12,4 +17,8 @@ class Light {
   //   b.direction=aim //set the bullets direction to our aim
   //   b.speed=10 //set bullets speed
   // }
+
+  
 }
+
+module.exports = Light;
