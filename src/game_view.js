@@ -70,8 +70,8 @@ class GameView {
 
   animate() {
     this.dirKeys();
-    // this.ctx.fillStyle = "#222";
-    // this.ctx.fillRect(0, 0, this.canvas.width, this.canvas.height);
+    this.ctx.fillStyle = "#000";
+    this.ctx.fillRect(0, 0, this.canvas.width, this.canvas.height);
 
     // const timeDelta = time - this.lastTime;
 
