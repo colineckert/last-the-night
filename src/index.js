@@ -3,7 +3,7 @@ const GameView = require('./game_view');
 
 // Initialize canvas and display splash
 document.addEventListener("DOMContentLoaded", () => {
-  console.log("Welcome to Last the Night");
+  console.log("Try to Last the Night");
   document.addEventListener("keydown", launch);
 
   const canvas = document.getElementById('canvas');
@@ -19,7 +19,7 @@ document.addEventListener("DOMContentLoaded", () => {
   
 });
 
-function launch(){
-  window.GameView = new GameView(canvas);22
+function launch() {
+  window.GameView = new GameView(canvas);
   window.GameView.start();
 } 

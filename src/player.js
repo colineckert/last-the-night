@@ -14,18 +14,19 @@ class Player {
   }
 };
 
-const rt2oTwo = Math.sqrt(2)/2;
+// const rt2oTwo = Math.sqrt(2)/2;
+const sqrt2d2 = Math.SQRT2/2;
 
 Player.SPEED = 1.5;
 Player.MOVES = {
   "U": [0, -1],
   "D": [0, 1],
-  "UL": [-rt2oTwo, -rt2oTwo],
-  "DL": [-rt2oTwo, rt2oTwo],
+  "UL": [-sqrt2d2, -sqrt2d2],
+  "DL": [-sqrt2d2, sqrt2d2],
   "L": [-1, 0],
   "R": [1, 0],
-  "UR": [rt2oTwo, -rt2oTwo],
-  "DR": [rt2oTwo, rt2oTwo]
+  "UR": [sqrt2d2, -sqrt2d2],
+  "DR": [sqrt2d2, sqrt2d2]
 }
 
 
