@@ -1,11 +1,12 @@
 const Game = require('./game');
 
 class GameView {
-  constructor(canvas) {
+  constructor(canvas, level) {
     this.canvas = canvas;
     this.ctx = canvas.getContext("2d");
-    this.game = new Game(canvas);
+    this.game = new Game(canvas, level);
     this.player = this.game.player;
+    this.level = level;
   };
 
   bindKeyHandlers() {
@@ -48,7 +49,7 @@ class GameView {
     //bind key handlers
     this.bindKeyHandlers();
     this.dirKeys();
-    this.lastTime = 0;
+    // this.lastTime = 0;
 
     //start the animation
     requestAnimationFrame(this.animate.bind(this));
@@ -56,8 +57,8 @@ class GameView {
 
   animate() {
     this.dirKeys();
-    this.ctx.fillStyle = "#222";
-    this.ctx.fillRect(0, 0, this.canvas.width, this.canvas.height);
+    // this.ctx.fillStyle = "#222";
+    // this.ctx.fillRect(0, 0, this.canvas.width, this.canvas.height);
 
     // const timeDelta = time - this.lastTime;
 

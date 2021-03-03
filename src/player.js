@@ -21,7 +21,6 @@ class Player {
   }
 };
 
-// const rt2oTwo = Math.sqrt(2)/2;
 const sqrt2d2 = Math.SQRT2/2;
 
 Player.SPEED = 1.5;

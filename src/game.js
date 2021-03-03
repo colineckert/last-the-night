@@ -1,13 +1,14 @@
+const Coord = require('./coord');
 const Player = require('./player');
+const Map = require('./map')
 
 class Game {
-  constructor(canvas){
+  constructor(canvas, level) {
     this.canvas = canvas;
+    this.level = Map.LEVELS[level];
     window.player = this.player = new Player(
-      // this.level.playerStart.x * canvas.width,
-      // this.level.playerStart.y * canvas.height,
-      (0.05 * canvas.width),
-      (0.47 * canvas.height),
+      (this.level.playerStart.x * canvas.width),
+      (this.level.playerStart.y * canvas.height),
       this
     );
   }

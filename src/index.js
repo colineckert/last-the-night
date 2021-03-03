@@ -19,7 +19,10 @@ document.addEventListener("DOMContentLoaded", () => {
   
 });
 
+let level = 1;
+
 function launch() {
-  window.GameView = new GameView(canvas);
+  window.GameView = new GameView(canvas, level);
   window.GameView.start();
+  document.removeEventListener("keydown", launch);
 } 
