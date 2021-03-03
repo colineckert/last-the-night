@@ -1,14 +1,16 @@
 const Coord = require('./coord');
 
 class Player {
-  constructor(startX, startY, map){
+  constructor(startX, startY, game){
     this.pos = new Coord(startX, startY);
-    this.map = map;
+    this.game = game;
   }
 
   draw(ctx){
     ctx.fillStyle = "#fff";
-    ctx.fillRect(this.pos.x, this.pos.y, 10, 10);
+    ctx.beginPath();
+    ctx.arc(this.pos.x, this.pos.y, 4, 0, 2 * Math.PI);
+    ctx.fill();
   }
 };
 

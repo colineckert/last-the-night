@@ -1,8 +1,7 @@
 const Player = require('./player');
 
-class Map {
+class Game {
   constructor(canvas){
-    debugger
     this.canvas = canvas;
     window.player = this.player = new Player(
       // this.level.playerStart.x * canvas.width,
@@ -11,7 +10,6 @@ class Map {
       (0.47 * canvas.height),
       this
     );
-    debugger
   }
 
   allObjects() {
@@ -19,9 +17,9 @@ class Map {
   };
 
   draw(ctx) {
-    ctx.clearRect(0, 0, Map.DIM_X, Map.DIM_Y);
-    ctx.fillStyle = Map.BG_COLOR;
-    ctx.fillRect(0, 0, Map.DIM_X, Map.DIM_Y);
+    ctx.clearRect(0, 0, Game.DIM_X, Game.DIM_Y);
+    ctx.fillStyle = Game.BG_COLOR;
+    ctx.fillRect(0, 0, Game.DIM_X, Game.DIM_Y);
 
     this.allObjects().forEach(object => {
       object.draw(ctx);
@@ -29,8 +27,8 @@ class Map {
   };
 }
 
-Map.BG_COLOR = "#ccc";
-Map.DIM_X = 600;
-Map.DIM_Y = 600;
+Game.BG_COLOR = "#000";
+Game.DIM_X = 1200;
+Game.DIM_Y = 800;
 
-module.exports = Map;
+module.exports = Game;

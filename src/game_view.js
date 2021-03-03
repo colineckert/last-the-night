@@ -1,12 +1,11 @@
-const Map = require('./map');
+const Game = require('./game');
 
 class GameView {
   constructor(canvas) {
     this.canvas = canvas;
     this.ctx = canvas.getContext("2d");
-    this.map = new Map(canvas);
-    this.player = this.map.player;
-    debugger
+    this.game = new Game(canvas);
+    this.player = this.game.player;
   };
 
   start() {
@@ -15,7 +14,7 @@ class GameView {
     // this.ctx.fillRect(0, 0, this.canvas.width, this.canvas.height);
 
     // this.map.step();
-    this.map.draw(this.ctx);
+    this.game.draw(this.ctx);
     
     //request another animation or break if player won / lost
     // if (this.playerEscaped()){
