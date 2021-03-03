@@ -8,7 +8,7 @@ class Player {
 
   draw(ctx){
     ctx.fillStyle = "#fff";
-    ctx.fillRect(this.pos.x, this.pos.y, 40, 40);
+    ctx.fillRect(this.pos.x, this.pos.y, 10, 10);
   }
 };
 
