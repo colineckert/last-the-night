@@ -42,11 +42,24 @@ class GameView {
       player.move("U");
     } else if (GameView.KEYS['s']) {
       player.move("D");
-    }
+    } // else if --> space bar --> toggle light
   }
 
+  // // mouse
+  //   var vectorX = camera.offsetX + context.canvas.width / 2 - mouse.x;
+  //   var vectorY = camera.offsetY + context.canvas.height / 2 - mouse.y;
+
+  //   var length = Math.sqrt(vectorX * vectorX + vectorY * vectorY);
+
+  //   if (length > 0) {
+  //     vectorX /= length;
+  //     vectorY /= length;
+
+  //     this.angle = Math.atan2(vectorY, vectorX) + 90 * Math.PI / 180;
+  //   }
+
   start(){
-    //bind key handlers
+    // bind key and mouse handlers
     this.bindKeyHandlers();
     this.dirKeys();
     // this.lastTime = 0;

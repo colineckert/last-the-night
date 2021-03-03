@@ -1,3 +1,5 @@
+window.wallColor = {color: "#fff"};
+
 module.exports = {
   LEVELS : {
     1: {

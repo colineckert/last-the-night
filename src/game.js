@@ -1,16 +1,29 @@
 const Coord = require('./coord');
 const Player = require('./player');
-const Map = require('./map')
+const Map = require('./map');
+const Wall = require('./wall');
 
 class Game {
   constructor(canvas, level) {
     this.canvas = canvas;
     this.level = Map.LEVELS[level];
+    this.walls = this.level["walls"]
+                  .map(row => {
+                    return row.map((scalar, index) => {
+                      // debugger
+                      if (index % 2 === 0) {
+                        return scalar * canvas.width;
+                      } else {
+                        return scalar * canvas.height;
+                      }
+                    });
+                  })
+                  .map(info => new Wall(...info));
     window.player = this.player = new Player(
       (this.level.playerStart.x * canvas.width),
       (this.level.playerStart.y * canvas.height),
       this
-    );
+      );
   }
 
   allObjects() {
@@ -25,6 +38,8 @@ class Game {
     this.allObjects().forEach(object => {
       object.draw(ctx);
     });
+
+    this.walls.forEach(wall => wall.draw(ctx));
   };
 }
 

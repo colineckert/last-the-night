@@ -35,5 +35,4 @@ Player.MOVES = {
   "DR": [sqrt2d2, sqrt2d2]
 }
 
-
 module.exports = Player;
