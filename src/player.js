@@ -1,7 +1,9 @@
+const Coord = require('./coord');
+
 class Player {
   constructor(startX, startY, map){
-    // this.pos = new Coord(startX, startY);
-    // this.map = map;
+    this.pos = new Coord(startX, startY);
+    this.map = map;
   }
 
   draw(ctx){
@@ -23,3 +25,6 @@ Player.MOVES = {
   "UR": [rt2oTwo, -rt2oTwo],
   "DR": [rt2oTwo, rt2oTwo]
 }
+
+
+module.exports = Player;

@@ -1,12 +1,12 @@
+const Map = require('./map');
+
 class GameView {
-  constructor(canvas, passCallback, losingCallback, winningCallback, level) {
+  constructor(canvas){
     this.canvas = canvas;
     this.ctx = canvas.getContext("2d");
-    // this.map = new Map(canvas, level);
+    this.map = new Map(canvas);
     this.player = this.map.player;
-    this.passCallback = passCallback;
-    this.winningCallback = winningCallback;
-    this.losingCallback = losingCallback;
-    this.level = level;
   }
 }
+
+module.exports = GameView;
