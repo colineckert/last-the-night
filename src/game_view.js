@@ -9,6 +9,7 @@ class GameView {
     this.level = level;
   };
 
+  // key bindings
   bindKeyHandlers() {
     window.addEventListener("keydown", (e) => {
       GameView.KEYS[e.key] = true;
@@ -16,12 +17,17 @@ class GameView {
 
     window.addEventListener("keyup", (e) => {
       GameView.KEYS[e.key] = false;
+      // delete GameView.KEYS[e.key];
     });
 
     // window.addEventListener("click", (e) => {
     //   this.player.lightPulse(); 
     // });
-  }
+      
+    window.addEventListener("mousemove",(e) => { 
+        this.getMousePosition(this.canvas, e); 
+    }); 
+  } 
 
   dirKeys() {
     const player = this.player;
@@ -43,6 +49,15 @@ class GameView {
     } else if (GameView.KEYS['s']) {
       player.move("D");
     } // else if --> space bar --> toggle light
+  }
+
+  // mouse bindings
+  getMousePosition(canvas, event) { 
+    let rect = canvas.getBoundingClientRect(); 
+    let x = event.clientX - rect.left; 
+    let y = event.clientY - rect.top; 
+    console.log("Coordinate x: " + x,  
+                "Coordinate y: " + y); 
   }
 
   // // mouse
@@ -78,7 +93,7 @@ class GameView {
     // this.lastTime = time;
     // this.game.step(timeDelta);
     this.game.draw(this.ctx);
-
+    
     // every call to animate requests causes another call to animate
     requestAnimationFrame(this.animate.bind(this));
   }

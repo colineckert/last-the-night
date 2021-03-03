@@ -1,6 +1,6 @@
 
 class Light {
-  constructor(){
+  constructor() {
   }
   
   // aim() {
