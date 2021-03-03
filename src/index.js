@@ -7,7 +7,7 @@ document.addEventListener("DOMContentLoaded", () => {
   document.addEventListener("keydown", launch);
 
   const canvas = document.getElementById('canvas');
-  const body = document.getElementsByTagName('body')[0];
+  // const body = document.getElementsByTagName('body')[0];
   canvas.width = Game.DIM_X;
   canvas.height = Game.DIM_Y;
   

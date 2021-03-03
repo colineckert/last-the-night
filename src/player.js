@@ -9,7 +9,7 @@ class Player {
   draw(ctx){
     ctx.fillStyle = "#fff";
     ctx.beginPath();
-    ctx.arc(this.pos.x, this.pos.y, 4, 0, 2 * Math.PI);
+    ctx.arc(this.pos.x, this.pos.y, 5, 0, 2 * Math.PI);
     ctx.fill();
   }
 
@@ -17,8 +17,8 @@ class Player {
     const newX = this.pos.x + (Player.MOVES[dir][0] * Player.SPEED);
     const newY = this.pos.y + (Player.MOVES[dir][1] * Player.SPEED);
     const newCoord = new Coord(newX, newY);
+    this.pos = newCoord;
   }
-
 };
 
 // const rt2oTwo = Math.sqrt(2)/2;

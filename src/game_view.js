@@ -25,21 +25,21 @@ class GameView {
   dirKeys() {
     const player = this.player;
 
-    if (GameView.KEYS[87] && GameView.KEYS[65]) {
+    if (GameView.KEYS['w'] && GameView.KEYS['a']) {
       player.move("UL");
-    } else if (GameView.KEYS[87] && GameView.KEYS[68]){
+    } else if (GameView.KEYS['w'] && GameView.KEYS['d']){
       player.move("UR")
-    } else if (GameView.KEYS[83] && GameView.KEYS[65]){
+    } else if (GameView.KEYS['s'] && GameView.KEYS['a']){
       player.move("DL");
-    } else if (GameView.KEYS[83] && GameView.KEYS[68]){
+    } else if (GameView.KEYS['s'] && GameView.KEYS['d']){
       player.move("DR");
-    } else if (GameView.KEYS[65]) {
+    } else if (GameView.KEYS['a']) {
       player.move("L");
-    } else if (GameView.KEYS[68]) {
+    } else if (GameView.KEYS['d']) {
       player.move("R");
-    } else if (GameView.KEYS[87]) {
+    } else if (GameView.KEYS['w']) {
       player.move("U");
-    } else if (GameView.KEYS[83]) {
+    } else if (GameView.KEYS['s']) {
       player.move("D");
     }
   }
@@ -54,16 +54,16 @@ class GameView {
     requestAnimationFrame(this.animate.bind(this));
   }
 
-  animate(time) {
-    // this.dirKeys();
-    // this.ctx.fillStyle = "#222";
-    // this.ctx.fillRect(0, 0, this.canvas.width, this.canvas.height);
+  animate() {
+    this.dirKeys();
+    this.ctx.fillStyle = "#222";
+    this.ctx.fillRect(0, 0, this.canvas.width, this.canvas.height);
 
-    const timeDelta = time - this.lastTime;
+    // const timeDelta = time - this.lastTime;
 
+    // this.lastTime = time;
     // this.game.step(timeDelta);
     this.game.draw(this.ctx);
-    this.lastTime = time;
 
     // every call to animate requests causes another call to animate
     requestAnimationFrame(this.animate.bind(this));
