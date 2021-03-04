@@ -73,8 +73,8 @@ class Game {
   revealGhost(){
     debugger
     return this.ghosts.some(ghost => {
-      if (ghost.pos.equals(this.player.pos)) {
-        console.log("overlapping");
+      if (ghost.pos.equals(this.light.pos)) {
+        console.log("revealed ghost");
       }
     });
   }

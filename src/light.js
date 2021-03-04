@@ -1,10 +1,16 @@
-const Util = require('./util');
 const Coord = require('./coord');
 
 class Light {
   constructor(player) {
     this.player = player;
     this.pos = new Coord(player.pos.x, player.pos.y);
+    this.a = 600;
+    this.b = 600;
+    this.c = this.a / 2;
+    // semiperimeter
+    this.s = (this.a + this.b + this.c) / 2;
+    // Heron's formula
+    this.area = Math.sqrt(this.s * ((this.s - this.a) * (this.s - this.b) * (this.s - this.c)));
   }
   
   update(mouseX, mouseY) {
@@ -28,8 +34,8 @@ class Light {
     // the triangle
     ctx.beginPath();
     ctx.moveTo(0, 0);
-    ctx.lineTo(600, 300);
-    ctx.lineTo(600, -300);
+    ctx.lineTo(this.a, this.c);
+    ctx.lineTo(this.b, -this.c);
     ctx.closePath();
 
     // Add gradient and color stops
