@@ -8,9 +8,8 @@ class Ghost{
   }
 
   draw(ctx){
-
-    ctx.fillStyle = 'white';
-    ctx.fillRect(this.pos.x, this.pos.y, 10, 10);
+    ctx.fillStyle = 'black';
+    ctx.fillRect(this.pos.x, this.pos.y, 15, 15);
   }
 
   show() {

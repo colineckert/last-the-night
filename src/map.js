@@ -19,4 +19,4 @@ module.exports = {
   }
 } 
   
-window.wallColor = { color: "#111" };
+window.wallColor = { color: "#000" };

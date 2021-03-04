@@ -43,7 +43,7 @@ class Game {
   }
 
   allObjects() {
-    return [].concat(this.walls, this.ghosts, this.light, this.player);
+    return [].concat( this.walls, this.light, this.ghosts, this.player);
   }
 
   draw(ctx) {

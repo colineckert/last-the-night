@@ -75,6 +75,7 @@ class GameView {
     this.ctx.fillStyle = "#000";
     this.ctx.fillRect(0, 0, this.canvas.width, this.canvas.height);
 
+    // this.ctx.globalAlpha = 1;
     this.game.draw(this.ctx);
     // this.light.draw(this.ctx);
     

@@ -29,8 +29,8 @@ class Light {
     // the triangle
     ctx.beginPath();
     ctx.moveTo(0, 0);
-    ctx.lineTo(200, 100);
-    ctx.lineTo(200, -100);
+    ctx.lineTo(600, 300);
+    ctx.lineTo(600, -300);
     ctx.closePath();
     
     // // the fill color
@@ -41,14 +41,13 @@ class Light {
 
     let gradient = ctx.createLinearGradient(20,0, 240,0);
 
-    // Add three color stops
-    gradient.addColorStop(0, "rgb(225,255,210, 0.5)");
+    // Add color stops
+    gradient.addColorStop(0, "rgb(225,255,230, 0.7)");
     gradient.addColorStop(1, 'transparent');
-    // gradient.addColorStop(1, 'green');
 
     // Set the fill style and draw a rectangle
+    ctx.globalAlpha = 0.7;
     ctx.fillStyle = gradient;
-    // ctx.fillRect(20, 20, 160, 160);
     ctx.fill();
     
     
