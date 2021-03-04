@@ -3,6 +3,7 @@ const Player = require('./player');
 const Map = require('./map');
 const Wall = require('./wall');
 const Light = require('./light');
+const Ghost = require('./ghost');
 
 class Game {
   constructor(canvas, level) {
@@ -17,7 +18,7 @@ class Game {
                       } else {
                         return scalar * canvas.height;
                       }
-                    });
+                    })
                   })
                   .map(info => new Wall(...info));
 
@@ -25,14 +26,25 @@ class Game {
       (this.level.playerStart.x * canvas.width),
       (this.level.playerStart.y * canvas.height),
       this
-      );
+      )
 
     window.light = this.light = new Light(this.player);
+
+    this.ghosts = [];
+    if (this.level.ghosts) {
+      this.ghosts = this.level.ghosts.map( ghost => {
+        return new Ghost(
+          ghost.x * canvas.width,
+          ghost.y * canvas.height,
+          this,
+        )
+      })
+    }
   }
 
   allObjects() {
-    return [].concat(this.player);
-  };
+    return [].concat(this.player, this.ghosts, this.walls);
+  }
 
   draw(ctx) {
     // ctx.clearRect(0, 0, Game.DIM_X, Game.DIM_Y);
@@ -43,8 +55,9 @@ class Game {
       object.draw(ctx);
     });
 
-    this.walls.forEach(wall => wall.draw(ctx));
-  };
+    // this.walls.forEach(wall => wall.draw(ctx));
+    // this.ghosts.forEach(ghost => ghost.draw(ctx));
+  }
 
   collidingWithWall(coord){
     return this.walls.some( wall => {
@@ -53,9 +66,10 @@ class Game {
           || (coord.x > wall.bottomRight.x)
           || (coord.y < wall.topLeft.y)
           || (coord.y > wall.bottomRight.y)
-      );
-    });
+      )
+    })
   }
+
 }
 
 Game.BG_COLOR = "#000";

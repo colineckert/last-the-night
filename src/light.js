@@ -12,7 +12,7 @@ class Light {
     this.pos.y = mouseY;
   }
   
-  drawLight(context){
+  drawLight(ctx){
 
     let x_midpoint = this.player.pos.x;
     let y_midpoint = this.player.pos.y;
@@ -21,35 +21,46 @@ class Light {
     let diffY = this.pos.y - y_midpoint;
 
     // shift starting point to middle of canvas
-    context.setTransform(1, 0, 0, 1, x_midpoint, y_midpoint);
+    ctx.setTransform(1, 0, 0, 1, x_midpoint, y_midpoint);
 
     // rotate based on the mouse position
-    context.rotate(Math.atan2(diffY, diffX));
+    ctx.rotate(Math.atan2(diffY, diffX));
 
     // the triangle
-    context.beginPath();
-    context.moveTo(0, 0);
-    context.lineTo(200, 100);
-    context.lineTo(200, -100);
-    context.closePath();
+    ctx.beginPath();
+    ctx.moveTo(0, 0);
+    ctx.lineTo(200, 100);
+    ctx.lineTo(200, -100);
+    ctx.closePath();
+    
+    // // the fill color
+    // ctx.fillStyle = "rgb(255,255,224, 0.3)";
+    // ctx.fill();
 
-    // the fill color
-    context.fillStyle = "rgb(255,255,224, 0.3)";
-    // context.fillStyle = "gradient";
-    context.fill();
+    let gradient = ctx.createLinearGradient(20,0, 240,0);
 
+    // Add three color stops
+    gradient.addColorStop(0, "rgb(225,255,210, 0.5)");
+    gradient.addColorStop(1, 'transparent');
+    // gradient.addColorStop(1, 'green');
+
+    // Set the fill style and draw a rectangle
+    ctx.fillStyle = gradient;
+    // ctx.fillRect(20, 20, 160, 160);
+    ctx.fill();
+    
     // reset transform
-    context.setTransform(1, 0, 0, 1, 0, 0);
+    ctx.setTransform(1, 0, 0, 1, 0, 0);
 
     // the line
-    context.beginPath();
-    context.moveTo(this.pos.x, this.pos.y);
-    context.lineTo(x_midpoint, y_midpoint);
+    ctx.beginPath();
+    ctx.moveTo(this.pos.x, this.pos.y);
+    ctx.lineTo(x_midpoint, y_midpoint);
 
-    context.lineWidth = 2;
-    context.setLineDash([2, 5]);
-    context.strokeStyle = "#315659";
-    context.stroke();
+    ctx.lineWidth = 2;
+    ctx.setLineDash([2, 5]);
+    ctx.strokeStyle = "#315659";
+    ctx.stroke();
   }
 }
 

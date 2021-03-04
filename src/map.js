@@ -1,5 +1,3 @@
-window.wallColor = {color: "#222"};
-
 module.exports = {
   LEVELS : {
     1: {
@@ -13,6 +11,12 @@ module.exports = {
         [0.5, 0.65, 0.55, 1]
       ],
       playerStart: {x: .05, y: .50},
+      ghosts: [
+        {x: .40, y: .25},
+        {x: .60, y: .67}
+      ],
     }
   }
 } 
+  
+window.wallColor = { color: "#111" };

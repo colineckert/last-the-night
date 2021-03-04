@@ -16,16 +16,16 @@ class Player {
     const newY = this.pos.y + (Player.MOVES[dir][1] * Player.SPEED);
     const newCoord = new Coord(newX, newY);
 
-    const exploreCoordTopLeft = new Coord(newX - 3, newY - 3);
-    const exploreCoordBottomLeft = new Coord(newX - 3, newY + 3);
-    const exploreCoordTopRight = new Coord(newX + 3, newY - 3);
-    const exploreCoordBottomRight = new Coord(newX + 3, newY + 3);
+    const tryCoordTopLeft = new Coord(newX - 3, newY - 3);
+    const tryCoordBottomLeft = new Coord(newX - 3, newY + 3);
+    const tryCoordTopRight = new Coord(newX + 3, newY - 3);
+    const tryCoordBottomRight = new Coord(newX + 3, newY + 3);
 
     if (
-      this.game.collidingWithWall(exploreCoordTopLeft) ||
-      this.game.collidingWithWall(exploreCoordBottomLeft) ||
-      this.game.collidingWithWall(exploreCoordTopRight) ||
-      this.game.collidingWithWall(exploreCoordBottomRight)
+      this.game.collidingWithWall(tryCoordTopLeft) ||
+      this.game.collidingWithWall(tryCoordBottomLeft) ||
+      this.game.collidingWithWall(tryCoordTopRight) ||
+      this.game.collidingWithWall(tryCoordBottomRight)
     ) { return; }
 
     this.pos = newCoord;
