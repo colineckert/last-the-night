@@ -43,7 +43,7 @@ class Game {
   }
 
   allObjects() {
-    return [].concat(this.player, this.ghosts, this.walls);
+    return [].concat(this.walls, this.ghosts, this.light, this.player);
   }
 
   draw(ctx) {
@@ -68,6 +68,15 @@ class Game {
           || (coord.y > wall.bottomRight.y)
       )
     })
+  }
+
+  revealGhost(){
+    debugger
+    return this.ghosts.some(ghost => {
+      if (ghost.pos.equals(this.player.pos)) {
+        console.log("overlapping");
+      }
+    });
   }
 
 }

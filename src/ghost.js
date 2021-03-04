@@ -8,12 +8,15 @@ class Ghost{
   }
 
   draw(ctx){
-    ctx.fillStyle = "#eee";
+
+    ctx.fillStyle = 'white';
     ctx.fillRect(this.pos.x, this.pos.y, 10, 10);
-    this.invertColors();
   }
 
-  
+  show() {
+    if (this.game.revealGhost())
+    console.log("in the light");
+  }
 }
 
 module.exports = Ghost;

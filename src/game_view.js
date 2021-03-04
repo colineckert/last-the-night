@@ -76,7 +76,7 @@ class GameView {
     this.ctx.fillRect(0, 0, this.canvas.width, this.canvas.height);
 
     this.game.draw(this.ctx);
-    this.light.drawLight(this.ctx);
+    // this.light.draw(this.ctx);
     
     // every call to animate requests causes another call to animate
     requestAnimationFrame(this.animate.bind(this));

@@ -12,7 +12,7 @@ class Light {
     this.pos.y = mouseY;
   }
   
-  drawLight(ctx){
+  draw(ctx){
 
     let x_midpoint = this.player.pos.x;
     let y_midpoint = this.player.pos.y;
@@ -36,6 +36,8 @@ class Light {
     // // the fill color
     // ctx.fillStyle = "rgb(255,255,224, 0.3)";
     // ctx.fill();
+    
+    // ctx.globalCompositeOperation = 'difference';
 
     let gradient = ctx.createLinearGradient(20,0, 240,0);
 
@@ -49,18 +51,19 @@ class Light {
     // ctx.fillRect(20, 20, 160, 160);
     ctx.fill();
     
+    
     // reset transform
     ctx.setTransform(1, 0, 0, 1, 0, 0);
 
-    // the line
-    ctx.beginPath();
-    ctx.moveTo(this.pos.x, this.pos.y);
-    ctx.lineTo(x_midpoint, y_midpoint);
+    // // the line
+    // ctx.beginPath();
+    // ctx.moveTo(this.pos.x, this.pos.y);
+    // ctx.lineTo(x_midpoint, y_midpoint);
 
-    ctx.lineWidth = 2;
-    ctx.setLineDash([2, 5]);
-    ctx.strokeStyle = "#315659";
-    ctx.stroke();
+    // ctx.lineWidth = 2;
+    // ctx.setLineDash([2, 5]);
+    // ctx.strokeStyle = "#315659";
+    // ctx.stroke();
   }
 }
 
