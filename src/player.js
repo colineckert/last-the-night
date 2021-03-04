@@ -34,7 +34,7 @@ class Player {
 
 const sqrt2d2 = Math.SQRT2/2;
 
-Player.SPEED = 1.5;
+Player.SPEED = 5.5;
 Player.MOVES = {
   "U": [0, -1],
   "D": [0, 1],

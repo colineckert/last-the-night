@@ -13,7 +13,6 @@ class Light {
   }
   
   draw(ctx){
-
     let x_midpoint = this.player.pos.x;
     let y_midpoint = this.player.pos.y;
 
@@ -32,16 +31,9 @@ class Light {
     ctx.lineTo(600, 300);
     ctx.lineTo(600, -300);
     ctx.closePath();
-    
-    // // the fill color
-    // ctx.fillStyle = "rgb(255,255,224, 0.3)";
-    // ctx.fill();
-    
-    // ctx.globalCompositeOperation = 'difference';
 
+    // Add gradient and color stops
     let gradient = ctx.createLinearGradient(20,0, 240,0);
-
-    // Add color stops
     gradient.addColorStop(0, "rgb(225,255,230, 0.7)");
     gradient.addColorStop(1, 'transparent');
 
@@ -49,7 +41,6 @@ class Light {
     ctx.globalAlpha = 0.7;
     ctx.fillStyle = gradient;
     ctx.fill();
-    
     
     // reset transform
     ctx.setTransform(1, 0, 0, 1, 0, 0);
