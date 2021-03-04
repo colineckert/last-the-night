@@ -7,6 +7,7 @@ const Light = require('./light');
 class Game {
   constructor(canvas, level) {
     this.canvas = canvas;
+    this.ctx = canvas.getContext("2d");
     this.level = Map.LEVELS[level];
     this.walls = this.level["walls"]
                   .map(row => {
@@ -19,12 +20,14 @@ class Game {
                     });
                   })
                   .map(info => new Wall(...info));
+
     window.player = this.player = new Player(
       (this.level.playerStart.x * canvas.width),
       (this.level.playerStart.y * canvas.height),
       this
       );
-    // window.light = this.light = new Light();
+
+    window.light = this.light = new Light(this.player);
   }
 
   allObjects() {
@@ -35,7 +38,7 @@ class Game {
     // ctx.clearRect(0, 0, Game.DIM_X, Game.DIM_Y);
     // ctx.fillStyle = Game.BG_COLOR;
     // ctx.fillRect(0, 0, Game.DIM_X, Game.DIM_Y);
-
+    
     this.allObjects().forEach(object => {
       object.draw(ctx);
     });

@@ -8,9 +8,6 @@ class Player {
 
   draw(ctx){
     ctx.fillStyle = "#fff";
-    // ctx.beginPath();
-    // ctx.arc(this.pos.x, this.pos.y, 5, 0, 2 * Math.PI);
-    // ctx.fill();
     ctx.fillRect(this.pos.x, this.pos.y, 7, 7);
   }
 
@@ -37,7 +34,7 @@ class Player {
 
 const sqrt2d2 = Math.SQRT2/2;
 
-Player.SPEED = 5.5;
+Player.SPEED = 1.5;
 Player.MOVES = {
   "U": [0, -1],
   "D": [0, 1],
