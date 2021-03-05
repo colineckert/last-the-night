@@ -4,7 +4,7 @@ class Light {
   constructor(player) {
     this.player = player;
     this.cursPos = new Coord(player.pos.x, player.pos.y);
-    this.a = 600;
+    this.a = 300;
     this.b = this.a / 2;
     this.c = Math.sqrt((this.a * this.a) + (this.b * this.b));
     // semiperimeter
@@ -27,73 +27,79 @@ class Light {
   //   return (1 / cursorSlope);
   // }
 
-  // getAngleDeg() {
-  //   let angleRad = Math.atan(this.findCursorSlope());
-  //   let angleDeg = angleRad * 180 / Math.PI;
-  //   return(angleDeg);
-  // }
+  getAngleDeg() {
+    let angleRad = Math.atan(this.findCursorSlope());
+    let angleDeg = angleRad * 180 / Math.PI;
+    return(angleDeg);
+  }
 
-  // getTriCorner1() {
-  //   let angle = this.getAngleDeg() + 26.565;
-  //   let n = this.c;
-
-  //   let x1 = this.player.pos.x + (n * Math.sin(angle));
-  //   let y1 = this.player.pos.y + (n * Math.cos(angle));
-
-  //   return new Coord(x1, y1);
-  // }
-
-  // getTriCorner2() {
-  //   let angle = this.getAngleDeg() - 26.565;
-  //   let n = this.c;
-
-  //   let x2 = this.player.pos.x + (n * Math.cos(angle));
-  //   let y2 = this.player.pos.y + (n * Math.sin(angle));
-
-  //   return new Coord(x2, y2);
-  // }
-
-  // Find the point on a line of slope M at distance L 
+  // Find the point on a line of slope M at distance L, rotating around Player
   findTriTop() {
     // length of tri from player to cursor
-    // let l = this.a;
-    let l = 600;
+    let l = this.a;
 
     let pX = this.player.pos.x;
     let pY = this.player.pos.y;
 
     let t = new Coord(0, 0);
     let m = this.findCursorSlope();
-     
-    // Slope is 0
-    if (m == 0)
-    {
-      t.x = pX + l;
-      t.y = pY;
+    
+    if (pX <= this.cursPos.x) {
+      // Slope is 0
+      if (m == 0)
+      {
+        t.x = pX + l;
+        t.y = pY;
+      }
+      // If slope is infinte
+      else if (!isFinite(m))
+      {
+        t.x = pX;
+        t.y = pY + l;
+      } 
+      else 
+      {
+        let dx = (l / Math.sqrt(1 + (m * m)));
+        let dy = m * dx;
+        t.x = pX + dx;
+        t.y = pY + dy;
+      }
+      // else if (m > 0 )
+
+      // Return top of tri
+      return t;
     }
-    // If slope is infinte
-    else if (!isFinite(m))
-    {
-      t.x = pX;
-      t.y = pY + l;
-    } 
-    else
-    {
-      let dx = (l / Math.sqrt(1 + (m * m)));
-      let dy = m * dx;
-      t.x = pX + dx;
-      t.y = pY + dy;
+    else {
+      // Slope is 0
+      if (m == 0)
+      {
+        t.x = pX + l;
+        t.y = pY;
+      }
+      // If slope is infinte
+      else if (!isFinite(m))
+      {
+        t.x = pX;
+        t.y = pY + l;
+      } 
+      else 
+      {
+        let dx = (l / Math.sqrt(1 + (m * m)));
+        let dy = m * dx;
+        t.x = pX - dx;
+        t.y = pY - dy;
+      }
+      // else if (m > 0 )
+
+      // Return top of tri
+      return t;
     }
- 
-    // Return top of tri
-    return t;
   }
 
   // Find the corners of tri given player, top, and reciprical angle 
   findCorner1() {
     // length of top of tri
-    // let l = this.a;
-    let l = 600;
+    let l = this.a;
 
     // grab top of tri coord
     let q = this.findTriTop();
@@ -136,8 +142,7 @@ class Light {
 
   findCorner2() {
     // length of top of tri
-    let l = 600;
-    // let l = this.a;
+    let l = this.a;
 
     // grab top of tri coord
     let q = this.findTriTop();
