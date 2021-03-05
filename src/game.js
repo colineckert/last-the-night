@@ -71,9 +71,9 @@ class Game {
 
   revealGhost(){
     const light = this.light;
-
     return this.ghosts.some( ghost => {
       if (light.revealed(ghost.pos.x, ghost.pos.y)) {
+        ghost.active = true;
         console.log("REVEALED!!!")
       }
     })

@@ -22,11 +22,6 @@ class Light {
     return ((this.cursPos.y - this.player.pos.y) / (this.cursPos.x - this.player.pos.x));
   }
 
-  // findReciprocalSlope() {
-  //   let cursorSlope = this.findCursorSlope();
-  //   return (1 / cursorSlope);
-  // }
-
   getAngleDeg() {
     let angleRad = Math.atan(this.findCursorSlope());
     let angleDeg = angleRad * 180 / Math.PI;
@@ -208,7 +203,6 @@ class Light {
     
     /* Calculate area of triangle PAB */   
     let A3 = this.area(x1, y1, x2, y2, x, y); 
-    debugger
     
     let sumAreas = A1 + A2 + A3;
     

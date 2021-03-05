@@ -12,8 +12,8 @@ module.exports = {
       ],
       playerStart: {x: .05, y: .50},
       ghosts: [
-        {x: .40, y: .25},
-        {x: .60, y: .67}
+        { x: .40, y: .25, active: false },
+        { x: .60, y: .67, active: false }
       ],
     }
   }
