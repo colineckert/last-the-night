@@ -11,7 +11,7 @@ class GameView {
   };
 
   // key bindings
-  bindKeyHandlers() {
+  bindControlHandlers() {
     window.addEventListener("keydown", (e) => {
       GameView.KEYS[e.key] = true;
     });
@@ -63,10 +63,10 @@ class GameView {
 
   start(){
     // bind key and mouse handlers
-    this.bindKeyHandlers();
+    this.bindControlHandlers();
     this.dirKeys();
 
-    //start the animation
+    // start the animation
     requestAnimationFrame(this.animate.bind(this));
   }
 
@@ -75,9 +75,8 @@ class GameView {
     this.ctx.fillStyle = "#000";
     this.ctx.fillRect(0, 0, this.canvas.width, this.canvas.height);
 
-    // this.ctx.globalAlpha = 1;
+    this.game.step();
     this.game.draw(this.ctx);
-    // this.light.draw(this.ctx);
     
     // every call to animate requests causes another call to animate
     requestAnimationFrame(this.animate.bind(this));

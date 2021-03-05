@@ -36,6 +36,7 @@ class Game {
           ghost.x * canvas.width,
           ghost.y * canvas.height,
           this,
+          ghost.active
         )
       })
     }
@@ -72,11 +73,22 @@ class Game {
   revealGhost(){
     const light = this.light;
     return this.ghosts.some( ghost => {
+      if (!ghost.active) { return; }
       if (light.revealed(ghost.pos.x, ghost.pos.y)) {
         ghost.active = true;
         console.log("REVEALED!!!")
       }
     })
+  }
+
+  moveGhosts(){
+    for (let ghost of this.ghosts) {
+      ghost.move();
+    }
+  }
+
+  step(){
+    this.moveGhosts();
   }
 
 }

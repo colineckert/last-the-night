@@ -28,7 +28,7 @@ class Light {
     return(angleDeg);
   }
 
-  // Find the point on a line of slope M at distance L, rotating around Player
+  // Find the point on a line of slope M at distance L, rotating around Player pos
   findTriTop() {
 
     // length of tri from player to cursor

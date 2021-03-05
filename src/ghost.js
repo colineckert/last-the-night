@@ -1,10 +1,11 @@
 const Coord = require('./coord');
+const Util = require('./util');
 
 class Ghost{
-  constructor(startX, startY, game) {
+  constructor(startX, startY, game, active) {
     this.pos = new Coord(startX, startY);
     this.game = game;
-    this.light = this.game.light;
+    if (active) { this.activate(); }
   }
 
   draw(ctx){
@@ -12,10 +13,48 @@ class Ghost{
     ctx.fillRect(this.pos.x, this.pos.y, 15, 15);
   }
 
-  show() {
-    if (this.game.revealGhost())
-    console.log("in the light");
+  activate() {
+    this.active = true;
   }
+
+  direction() {
+    const vector = [
+      this.game.player.pos.x - this.pos.x,
+      this.game.player.pos.y - this.pos.y,
+    ]
+    const unitVector = Util.normalize(vector);
+    return new Coord(unitVector[0], unitVector[1]);
+  }
+
+  move(){
+    if (this.active) {
+      const dir = this.direction();
+      const newX = this.pos.x + (dir.x * Ghost.SPEED)
+      const newY = this.pos.y + (dir.y * Ghost.SPEED)
+      let newCoord = new Coord(newX, newY);
+
+      if (this.game.collidingWithWall(newCoord)) {
+        newCoord = new Coord(
+          this.pos.x + (dir.x * Monster.SPEED),
+          this.pos.y
+        )
+        if (this.game.collidingWithWall(newCoord)){
+          newCoord = new Coord(
+            this.pos.x,
+            this.pos.y + (dir.y * Monster.SPEED)
+          )
+        } if (this.game.collidingWithWall(newCoord)) {
+          return;
+        }
+      }
+
+      this.pos = newCoord;
+    }
+  }
+
+
 }
+
+Ghost.SPEED = 1.2;
 
 module.exports = Ghost;
