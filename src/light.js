@@ -35,6 +35,7 @@ class Light {
 
   // Find the point on a line of slope M at distance L, rotating around Player
   findTriTop() {
+
     // length of tri from player to cursor
     let l = this.a;
 
@@ -64,7 +65,6 @@ class Light {
         t.x = pX + dx;
         t.y = pY + dy;
       }
-      // else if (m > 0 )
 
       // Return top of tri
       return t;
@@ -89,14 +89,14 @@ class Light {
         t.x = pX - dx;
         t.y = pY - dy;
       }
-      // else if (m > 0 )
 
       // Return top of tri
       return t;
     }
   }
 
-  // Find the corners of tri given player, top, and reciprical angle 
+  // Find the corners of tri given player, tri top, and reciprical angle
+  // Use 
   findCorner1() {
     // length of top of tri
     let l = this.a;
@@ -113,14 +113,14 @@ class Light {
     // horizontal rectangle  
     if (p.x == q.x)  
     { 
-            c.x = (q.x + (l / 2.0)); 
-            c.y = q.y; 
+      c.x = (q.x + (l / 2.0)); 
+      c.y = q.y; 
     }  
     // vertical rectangle  
     else if (p.y == q.y) 
     { 
-            c.y = (q.y + (l / 2.0)); 
-            c.x = q.x; 
+      c.y = (q.y + (l / 2.0)); 
+      c.x = q.x; 
     }  
     // slanted rectangle  
     else 
@@ -133,8 +133,8 @@ class Light {
       let dx = ((l / Math.sqrt(1 + (m * m))) * 0.5); 
       let dy = m * dx; 
 
-            c.x = q.x + dx; 
-            c.y = q.y + dy; 
+      c.x = q.x + dx; 
+      c.y = q.y + dy; 
     }
 
     return c;
@@ -156,14 +156,14 @@ class Light {
     // horizontal rectangle  
     if (p.x == q.x)  
     { 
-            b.x = (q.x - (l / 2.0)); 
-            b.y = q.y; 
+      b.x = (q.x - (l / 2.0)); 
+      b.y = q.y; 
     }  
     // vertical rectangle  
     else if (p.y == q.y) 
     { 
-            b.y = (q.y - (l / 2.0)); 
-            b.x = q.x; 
+      b.y = (q.y - (l / 2.0)); 
+      b.x = q.x; 
     }  
     // slanted rectangle  
     else 
@@ -176,8 +176,8 @@ class Light {
       let dx = ((l / Math.sqrt(1 + (m * m))) * 0.5); 
       let dy = m * dx; 
 
-            b.x = q.x - dx; 
-            b.y = q.y - dy; 
+      b.x = q.x - dx; 
+      b.y = q.y - dy; 
     }
 
     return b;
