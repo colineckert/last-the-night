@@ -70,6 +70,15 @@ class GameView {
     requestAnimationFrame(this.animate.bind(this));
   }
 
+  playerEscaped(){
+    return this.player.escaped();
+  }
+
+  playerKilled(){
+    //ask game if player collided with ghost
+    return this.game.playerKilled();
+  }
+
   animate() {
     this.dirKeys();
     this.ctx.fillStyle = "#000";
@@ -77,6 +86,9 @@ class GameView {
 
     this.game.step();
     this.game.draw(this.ctx);
+
+    this.playerEscaped();
+    this.playerKilled();
     
     // every call to animate requests causes another call to animate
     requestAnimationFrame(this.animate.bind(this));

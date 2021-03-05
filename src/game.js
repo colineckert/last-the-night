@@ -70,13 +70,20 @@ class Game {
     })
   }
 
+  escapedMap(coord){
+    return (
+      (coord.x < 0) || 
+      (coord.y < 0) || 
+      (coord.x > canvas.width) || 
+      (coord.y > canvas.height)
+    );
+  }
+
   revealGhost(){
     const light = this.light;
     return this.ghosts.some( ghost => {
-      if (!ghost.active) { return; }
       if (light.revealed(ghost.pos.x, ghost.pos.y)) {
-        ghost.active = true;
-        console.log("REVEALED!!!")
+        setTimeout(ghost.activate(), 5000);
       }
     })
   }
@@ -87,7 +94,15 @@ class Game {
     }
   }
 
+  playerKilled(){
+    return this.ghosts.some(ghost => {
+      if (!ghost.active) { return; }
+      return ghost.pos.equals(this.player.pos);
+    });
+  }
+
   step(){
+    this.revealGhost();
     this.moveGhosts();
   }
 

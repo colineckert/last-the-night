@@ -5,7 +5,7 @@ class Ghost{
   constructor(startX, startY, game, active) {
     this.pos = new Coord(startX, startY);
     this.game = game;
-    if (active) { this.activate(); }
+    // if (active) { this.activate(); }
   }
 
   draw(ctx){
@@ -35,13 +35,13 @@ class Ghost{
 
       if (this.game.collidingWithWall(newCoord)) {
         newCoord = new Coord(
-          this.pos.x + (dir.x * Monster.SPEED),
+          this.pos.x + (dir.x * Ghost.SPEED),
           this.pos.y
         )
         if (this.game.collidingWithWall(newCoord)){
           newCoord = new Coord(
             this.pos.x,
-            this.pos.y + (dir.y * Monster.SPEED)
+            this.pos.y + (dir.y * Ghost.SPEED)
           )
         } if (this.game.collidingWithWall(newCoord)) {
           return;
@@ -55,6 +55,6 @@ class Ghost{
 
 }
 
-Ghost.SPEED = 1.2;
+Ghost.SPEED = 0.8;
 
 module.exports = Ghost;

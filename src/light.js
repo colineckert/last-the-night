@@ -4,13 +4,9 @@ class Light {
   constructor(player) {
     this.player = player;
     this.cursPos = new Coord(player.pos.x, player.pos.y);
-    this.a = 300;
+    this.a = 200;
     this.b = this.a / 2;
     this.c = Math.sqrt((this.a * this.a) + (this.b * this.b));
-    // semiperimeter
-    // this.s = (this.a + this.b + this.c) / 2;
-    // Heron's formula
-    // this.area = Math.sqrt(this.s * ((this.s - this.a) * (this.s - this.b) * (this.s - this.c)));
   }
   
   update(mouseX, mouseY) {
@@ -231,29 +227,28 @@ class Light {
     ctx.closePath();
 
     // Add gradient and color stops
-    // let gradient = ctx.createLinearGradient(300,0, 500,0);
-    // gradient.addColorStop(0, "rgb(225,255,230, 0.7)");
-    // gradient.addColorStop(0, "white");
-    // gradient.addColorStop(1, 'transparent');
+    let gradient = ctx.createLinearGradient(30,0, 250,0);
+    gradient.addColorStop(0, "white");
+    gradient.addColorStop(1, 'transparent');
 
     // Set the fill style and draw a rectangle
     ctx.globalAlpha = 0.7;
-    // ctx.fillStyle = gradient;
-    ctx.fillStyle = "white";
+    ctx.fillStyle = gradient;
+    // ctx.fillStyle = "white";
     ctx.fill();
     
     // reset transform
     ctx.setTransform(1, 0, 0, 1, 0, 0);
 
-    // the line
-    ctx.beginPath();
-    ctx.moveTo(this.cursPos.x, this.cursPos.y);
-    ctx.lineTo(x_midpoint, y_midpoint);
+    // // the line
+    // ctx.beginPath();
+    // ctx.moveTo(this.cursPos.x, this.cursPos.y);
+    // ctx.lineTo(x_midpoint, y_midpoint);
 
-    ctx.lineWidth = 2;
-    ctx.setLineDash([2, 5]);
-    ctx.strokeStyle = "#315659";
-    ctx.stroke();
+    // ctx.lineWidth = 2;
+    // ctx.setLineDash([2, 5]);
+    // ctx.strokeStyle = "#315659";
+    // ctx.stroke();
   }
 }
 
