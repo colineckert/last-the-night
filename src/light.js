@@ -4,12 +4,8 @@ class Light {
   constructor(player) {
     this.player = player;
     this.cursPos = new Coord(player.pos.x, player.pos.y);
-    // this.a = 300;
-    // this.b = this.a / 2;
-
-    this.a = new Coord(600, 300);
-    this.b = new Coord(600, -300);
-
+    this.a = 600;
+    this.b = this.a / 2;
     this.c = Math.sqrt((this.a * this.a) + (this.b * this.b));
     // semiperimeter
     // this.s = (this.a + this.b + this.c) / 2;
@@ -26,10 +22,36 @@ class Light {
     return ((this.cursPos.y - this.player.pos.y) / (this.cursPos.x - this.player.pos.x));
   }
 
-  findReciprocalSlope() {
-    let cursorSlope = this.findCursorSlope();
-    return (1 / cursorSlope);
-  }
+  // findReciprocalSlope() {
+  //   let cursorSlope = this.findCursorSlope();
+  //   return (1 / cursorSlope);
+  // }
+
+  // getAngleDeg() {
+  //   let angleRad = Math.atan(this.findCursorSlope());
+  //   let angleDeg = angleRad * 180 / Math.PI;
+  //   return(angleDeg);
+  // }
+
+  // getTriCorner1() {
+  //   let angle = this.getAngleDeg() + 26.565;
+  //   let n = this.c;
+
+  //   let x1 = this.player.pos.x + (n * Math.sin(angle));
+  //   let y1 = this.player.pos.y + (n * Math.cos(angle));
+
+  //   return new Coord(x1, y1);
+  // }
+
+  // getTriCorner2() {
+  //   let angle = this.getAngleDeg() - 26.565;
+  //   let n = this.c;
+
+  //   let x2 = this.player.pos.x + (n * Math.cos(angle));
+  //   let y2 = this.player.pos.y + (n * Math.sin(angle));
+
+  //   return new Coord(x2, y2);
+  // }
 
   // Find the point on a line of slope M at distance L 
   findTriTop() {
@@ -161,14 +183,14 @@ class Light {
   } 
 
   revealed(x, y) {    
-    let x1 = this.player.pos.x;
-    let y1 = this.player.pos.y;
+    let x1 = Math.abs(this.player.pos.x);
+    let y1 = Math.abs(this.player.pos.y);
 
-    let x2 = this.findCorner1().x;
-    let y2 = this.findCorner1().y;
+    let x2 = Math.abs(this.findCorner1().x);
+    let y2 = Math.abs(this.findCorner1().y);
 
-    let x3 = this.findCorner2().x;
-    let y3 = this.findCorner2().y;
+    let x3 = Math.abs(this.findCorner2().x);
+    let y3 = Math.abs(this.findCorner2().y);
 
     /* Calculate area of triangle ABC */
     let A = this.area(x1, y1, x2, y2, x3, y3); 
@@ -205,10 +227,8 @@ class Light {
     // the triangle
     ctx.beginPath();
     ctx.moveTo(0, 0);
-    ctx.lineTo(this.a.x, this.a.y);
-    ctx.lineTo(this.b.x, this.b.y);
-    // ctx.lineTo(this.a, this.b);
-    // ctx.lineTo(this.a, -this.b);
+    ctx.lineTo(this.a, this.b);
+    ctx.lineTo(this.a, -this.b);
     ctx.closePath();
 
     // Add gradient and color stops
