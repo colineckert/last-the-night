@@ -5,8 +5,8 @@ class Light {
     this.player = player;
     this.pos = new Coord(player.pos.x, player.pos.y);
     this.a = 600;
-    this.b = 600;
-    this.c = this.a / 2;
+    this.b = this.a / 2;
+    this.c = 670.82;
     // semiperimeter
     this.s = (this.a + this.b + this.c) / 2;
     // Heron's formula
@@ -17,6 +17,16 @@ class Light {
     this.pos.x = mouseX;
     this.pos.y = mouseY;
   }
+
+  findCursorSlope() {
+    // debugger
+    return ((this.pos.y - this.player.pos.y) / (this.pos.x - this.player.pos.x));
+  }
+
+  findReciprocalSlope() {
+    let cursorSlope = this.findCursorSlope();
+    return (1 / cursorSlope);
+  }
   
   draw(ctx){
     let x_midpoint = this.player.pos.x;
@@ -24,7 +34,7 @@ class Light {
 
     let diffX = this.pos.x - x_midpoint; 
     let diffY = this.pos.y - y_midpoint;
-
+    
     // shift starting point to middle of canvas
     ctx.setTransform(1, 0, 0, 1, x_midpoint, y_midpoint);
 
@@ -34,32 +44,33 @@ class Light {
     // the triangle
     ctx.beginPath();
     ctx.moveTo(0, 0);
-    ctx.lineTo(this.a, this.c);
-    ctx.lineTo(this.b, -this.c);
+    ctx.lineTo(this.a, this.b);
+    ctx.lineTo(this.a, -this.b);
     ctx.closePath();
 
     // Add gradient and color stops
-    let gradient = ctx.createLinearGradient(20,0, 240,0);
-    gradient.addColorStop(0, "rgb(225,255,230, 0.7)");
-    gradient.addColorStop(1, 'transparent');
+    // let gradient = ctx.createLinearGradient(20,0, 240,0);
+    // gradient.addColorStop(0, "rgb(225,255,230, 0.7)");
+    // gradient.addColorStop(1, 'transparent');
 
     // Set the fill style and draw a rectangle
     ctx.globalAlpha = 0.7;
-    ctx.fillStyle = gradient;
+    // ctx.fillStyle = gradient;
+    ctx.fillStyle = "white";
     ctx.fill();
     
     // reset transform
     ctx.setTransform(1, 0, 0, 1, 0, 0);
 
-    // // the line
-    // ctx.beginPath();
-    // ctx.moveTo(this.pos.x, this.pos.y);
-    // ctx.lineTo(x_midpoint, y_midpoint);
+    // the line
+    ctx.beginPath();
+    ctx.moveTo(this.pos.x, this.pos.y);
+    ctx.lineTo(x_midpoint, y_midpoint);
 
-    // ctx.lineWidth = 2;
-    // ctx.setLineDash([2, 5]);
-    // ctx.strokeStyle = "#315659";
-    // ctx.stroke();
+    ctx.lineWidth = 2;
+    ctx.setLineDash([2, 5]);
+    ctx.strokeStyle = "#315659";
+    ctx.stroke();
   }
 }
 

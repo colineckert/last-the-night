@@ -71,12 +71,14 @@ class Game {
   }
 
   revealGhost(){
-    debugger
-    return this.ghosts.some(ghost => {
-      if (ghost.pos.equals(this.light.pos)) {
-        console.log("revealed ghost");
-      }
-    });
+    return this.ghosts.some( ghost => {
+      return !(
+        (ghost.pos.x < wall.topLeft.x)
+          || (coord.x > wall.bottomRight.x)
+          || (coord.y < wall.topLeft.y)
+          || (coord.y > wall.bottomRight.y)
+      )
+    })
   }
 
 }
