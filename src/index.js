@@ -1,4 +1,3 @@
-const Game = require("./game");
 const GameView = require('./game_view');
 
 // Initialize canvas and display splash

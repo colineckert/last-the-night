@@ -4,13 +4,17 @@ class Light {
   constructor(player) {
     this.player = player;
     this.cursPos = new Coord(player.pos.x, player.pos.y);
-    this.a = 600;
-    this.b = this.a / 2;
+    // this.a = 300;
+    // this.b = this.a / 2;
+
+    this.a = new Coord(600, 300);
+    this.b = new Coord(600, -300);
+
     this.c = Math.sqrt((this.a * this.a) + (this.b * this.b));
     // semiperimeter
-    this.s = (this.a + this.b + this.c) / 2;
+    // this.s = (this.a + this.b + this.c) / 2;
     // Heron's formula
-    this.area = Math.sqrt(this.s * ((this.s - this.a) * (this.s - this.b) * (this.s - this.c)));
+    // this.area = Math.sqrt(this.s * ((this.s - this.a) * (this.s - this.b) * (this.s - this.c)));
   }
   
   update(mouseX, mouseY) {
@@ -19,7 +23,6 @@ class Light {
   }
 
   findCursorSlope() {
-    // debugger
     return ((this.cursPos.y - this.player.pos.y) / (this.cursPos.x - this.player.pos.x));
   }
 
@@ -28,8 +31,162 @@ class Light {
     return (1 / cursorSlope);
   }
 
-  findCorners() {
-    // let 
+  // Find the point on a line of slope M at distance L 
+  findTriTop() {
+    // length of tri from player to cursor
+    // let l = this.a;
+    let l = 600;
+
+    let pX = this.player.pos.x;
+    let pY = this.player.pos.y;
+
+    let t = new Coord(0, 0);
+    let m = this.findCursorSlope();
+     
+    // Slope is 0
+    if (m == 0)
+    {
+      t.x = pX + l;
+      t.y = pY;
+    }
+    // If slope is infinte
+    else if (!isFinite(m))
+    {
+      t.x = pX;
+      t.y = pY + l;
+    } 
+    else
+    {
+      let dx = (l / Math.sqrt(1 + (m * m)));
+      let dy = m * dx;
+      t.x = pX + dx;
+      t.y = pY + dy;
+    }
+ 
+    // Return top of tri
+    return t;
+  }
+
+  // Find the corners of tri given player, top, and reciprical angle 
+  findCorner1() {
+    // length of top of tri
+    // let l = this.a;
+    let l = 600;
+
+    // grab top of tri coord
+    let q = this.findTriTop();
+
+    // grab player and cursor x and y coords
+    let p = this.player.pos
+
+    // initiate corner points
+    let c = new Coord(0, 0)
+    
+    // horizontal rectangle  
+    if (p.x == q.x)  
+    { 
+            c.x = (q.x + (l / 2.0)); 
+            c.y = q.y; 
+    }  
+    // vertical rectangle  
+    else if (p.y == q.y) 
+    { 
+            c.y = (q.y + (l / 2.0)); 
+            c.x = q.x; 
+    }  
+    // slanted rectangle  
+    else 
+    { 
+      // calculate slope of the side  
+      let m = (p.x - q.x) / (q.y - p.y); 
+      // let m = this.findReciprocalSlope();
+
+      // calculate displacements along axes  
+      let dx = ((l / Math.sqrt(1 + (m * m))) * 0.5); 
+      let dy = m * dx; 
+
+            c.x = q.x + dx; 
+            c.y = q.y + dy; 
+    }
+
+    return c;
+  }
+
+  findCorner2() {
+    // length of top of tri
+    let l = 600;
+    // let l = this.a;
+
+    // grab top of tri coord
+    let q = this.findTriTop();
+
+    // grab player and cursor x and y coords
+    let p = this.player.pos
+
+    // initiate corner points
+    let b = new Coord(0, 0);
+    
+    // horizontal rectangle  
+    if (p.x == q.x)  
+    { 
+            b.x = (q.x - (l / 2.0)); 
+            b.y = q.y; 
+    }  
+    // vertical rectangle  
+    else if (p.y == q.y) 
+    { 
+            b.y = (q.y - (l / 2.0)); 
+            b.x = q.x; 
+    }  
+    // slanted rectangle  
+    else 
+    { 
+      // calculate slope of the side  
+      let m = (p.x - q.x) / (q.y - p.y); 
+      // let m = this.findReciprocalSlope();
+
+      // calculate displacements along axes  
+      let dx = ((l / Math.sqrt(1 + (m * m))) * 0.5); 
+      let dy = m * dx; 
+
+            b.x = q.x - dx; 
+            b.y = q.y - dy; 
+    }
+
+    return b;
+  }
+
+  area(x1,  y1,  x2,  y2, x3,  y3) { 
+    return Math.abs((x1*(y2-y3) + x2*(y3-y1)+ x3*(y1-y2))/2.0); 
+  } 
+
+  revealed(x, y) {    
+    let x1 = this.player.pos.x;
+    let y1 = this.player.pos.y;
+
+    let x2 = this.findCorner1().x;
+    let y2 = this.findCorner1().y;
+
+    let x3 = this.findCorner2().x;
+    let y3 = this.findCorner2().y;
+
+    /* Calculate area of triangle ABC */
+    let A = this.area(x1, y1, x2, y2, x3, y3); 
+    
+    /* Calculate area of triangle PBC */  
+    let A1 = this.area(x, y, x2, y2, x3, y3); 
+    
+    /* Calculate area of triangle PAC */  
+    let A2 = this.area(x1, y1, x, y, x3, y3); 
+    
+    /* Calculate area of triangle PAB */   
+    let A3 = this.area(x1, y1, x2, y2, x, y); 
+    debugger
+    
+    let sumAreas = A1 + A2 + A3;
+    
+    /* Check if sum of A1, A2 and A3 is same as A */
+    return (((A - 1) <= sumAreas) && (sumAreas <= (A + 1))); 
   }
   
   draw(ctx){
@@ -48,13 +205,16 @@ class Light {
     // the triangle
     ctx.beginPath();
     ctx.moveTo(0, 0);
-    ctx.lineTo(this.a, this.b);
-    ctx.lineTo(this.a, -this.b);
+    ctx.lineTo(this.a.x, this.a.y);
+    ctx.lineTo(this.b.x, this.b.y);
+    // ctx.lineTo(this.a, this.b);
+    // ctx.lineTo(this.a, -this.b);
     ctx.closePath();
 
     // Add gradient and color stops
-    // let gradient = ctx.createLinearGradient(20,0, 240,0);
+    // let gradient = ctx.createLinearGradient(300,0, 500,0);
     // gradient.addColorStop(0, "rgb(225,255,230, 0.7)");
+    // gradient.addColorStop(0, "white");
     // gradient.addColorStop(1, 'transparent');
 
     // Set the fill style and draw a rectangle

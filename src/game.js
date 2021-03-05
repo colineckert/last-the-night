@@ -1,4 +1,3 @@
-const Coord = require('./coord');
 const Player = require('./player');
 const Map = require('./map');
 const Wall = require('./wall');
@@ -71,13 +70,12 @@ class Game {
   }
 
   revealGhost(){
+    const light = this.light;
+
     return this.ghosts.some( ghost => {
-      return !(
-        (ghost.pos.x < wall.topLeft.x)
-          || (coord.x > wall.bottomRight.x)
-          || (coord.y < wall.topLeft.y)
-          || (coord.y > wall.bottomRight.y)
-      )
+      if (light.revealed(ghost.pos.x, ghost.pos.y)) {
+        console.log("REVEALED!!!")
+      }
     })
   }
 
