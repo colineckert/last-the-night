@@ -3,10 +3,10 @@ const Coord = require('./coord');
 class Light {
   constructor(player) {
     this.player = player;
-    this.pos = new Coord(player.pos.x, player.pos.y);
+    this.cursPos = new Coord(player.pos.x, player.pos.y);
     this.a = 600;
     this.b = this.a / 2;
-    this.c = 670.82;
+    this.c = Math.sqrt((this.a * this.a) + (this.b * this.b));
     // semiperimeter
     this.s = (this.a + this.b + this.c) / 2;
     // Heron's formula
@@ -14,26 +14,30 @@ class Light {
   }
   
   update(mouseX, mouseY) {
-    this.pos.x = mouseX;
-    this.pos.y = mouseY;
+    this.cursPos.x = mouseX;
+    this.cursPos.y = mouseY;
   }
 
   findCursorSlope() {
     // debugger
-    return ((this.pos.y - this.player.pos.y) / (this.pos.x - this.player.pos.x));
+    return ((this.cursPos.y - this.player.pos.y) / (this.cursPos.x - this.player.pos.x));
   }
 
   findReciprocalSlope() {
     let cursorSlope = this.findCursorSlope();
     return (1 / cursorSlope);
   }
+
+  findCorners() {
+    // let 
+  }
   
   draw(ctx){
     let x_midpoint = this.player.pos.x;
     let y_midpoint = this.player.pos.y;
 
-    let diffX = this.pos.x - x_midpoint; 
-    let diffY = this.pos.y - y_midpoint;
+    let diffX = this.cursPos.x - x_midpoint; 
+    let diffY = this.cursPos.y - y_midpoint;
     
     // shift starting point to middle of canvas
     ctx.setTransform(1, 0, 0, 1, x_midpoint, y_midpoint);
@@ -64,7 +68,7 @@ class Light {
 
     // the line
     ctx.beginPath();
-    ctx.moveTo(this.pos.x, this.pos.y);
+    ctx.moveTo(this.cursPos.x, this.cursPos.y);
     ctx.lineTo(x_midpoint, y_midpoint);
 
     ctx.lineWidth = 2;
