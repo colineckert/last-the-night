@@ -18,23 +18,31 @@ document.addEventListener("DOMContentLoaded", () => {
 
 let level = 1;
 
-function launch() {
-  const splashes = document.querySelectorAll('.splash');
-  for (let splash of splashes) {
-    splash.style.visibility = "hidden";
-  }
-  window.GameView = new GameView(canvas, level);
-  window.GameView.start();
-  document.removeEventListener("keydown", launch);
-} 
-
-function win(){
+function win() {
   const winSplash = document.getElementById('win-splash');
-  const victoryLine = document.getElementById('level-victory');
-  victoryLine.innerHTML = `YOU HAVE BEATEN LEVEL ${level}`;
+  // const victoryLine = document.getElementById('level-victory');
+  // victoryLine.innerHTML = `YOU HAVE BEATEN LEVEL ${level}`;
   winSplash.style.visibility = "visible";
   level = 1;
   setTimeout( () => {
     document.addEventListener("keydown", launch)
   }, 2000);
 }
+
+function lose() {
+  const loseSplash = document.getElementById('lose-splash');
+  loseSplash.style.visibility = "visible";
+  setTimeout( () => {
+    document.addEventListener("keydown", launch)
+  }, 2000);
+}
+
+function launch() {
+  const splashes = document.querySelectorAll('.splash');
+  for (let splash of splashes) {
+    splash.style.visibility = "hidden";
+  }
+  window.GameView = new GameView(canvas, level, win, lose);
+  window.GameView.start();
+  document.removeEventListener("keydown", launch);
+} 

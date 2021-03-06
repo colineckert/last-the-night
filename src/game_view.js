@@ -1,13 +1,15 @@
 const Game = require('./game');
 
 class GameView {
-  constructor(canvas, level) {
+  constructor(canvas, level, winningCallback, losingCallback) {
     this.canvas = canvas;
     this.ctx = canvas.getContext("2d");
     this.game = new Game(canvas, level);
     this.level = level;
     this.player = this.game.player;
     this.light = this.game.light;
+    this.winningCallback = winningCallback;
+    this.losingCallback = losingCallback;
   };
 
   // key bindings
