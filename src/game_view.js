@@ -90,8 +90,19 @@ class GameView {
     this.playerEscaped();
     this.playerKilled();
     
-    // every call to animate requests causes another call to animate
-    requestAnimationFrame(this.animate.bind(this));
+    if (this.playerEscaped()) {
+      // if (this.level <= 5) {
+      //   this.passCallback();
+      // } else {
+        this.winningCallback();
+      // }
+    } else if (this.playerKilled()){
+      this.losingCallback();
+    } else {
+      // every call to animate requests causes another call to animate
+      requestAnimationFrame(this.animate.bind(this));
+    }
+    // requestAnimationFrame(this.animate.bind(this));
   }
 };
 

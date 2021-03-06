@@ -9,7 +9,7 @@ class Ghost{
   }
 
   draw(ctx){
-    ctx.fillStyle = 'black';
+    ctx.fillStyle = '#000';
     ctx.fillRect(this.pos.x, this.pos.y, 15, 15);
   }
 
@@ -53,6 +53,9 @@ class Ghost{
   }
 
 
+  sleep(ms) {
+    return new Promise((resolve) => setTimeout(resolve, ms));
+  }
 }
 
 Ghost.SPEED = 0.8;

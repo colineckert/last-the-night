@@ -1,0 +1,73 @@
+body {
+  font-family: 'Courier New', Courier, monospace;
+  width: 80%;
+  margin: 0 auto;
+  background-color: black;
+}
+
+.game-area {
+  position: relative;
+  margin: 0 auto;
+  border: 1px dashed #222;
+}
+
+.nav-list a {
+  text-decoration: none;
+  color: white;
+  padding-left: 15px;
+  font-size: 24px;
+  transition: .3s color ease-in-out;
+}
+
+.nav-list a:hover {
+  color: yellow;
+}
+
+.game-title {
+  font-family: 'Courier New', Courier, monospace;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px;
+  color: white;
+}
+
+h1 {
+  font-size: 42px;
+  font-weight: 900;
+}
+
+.splash {
+  background: black;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  text-align: center;
+  color: white;
+  border: 1px dashed #222;
+}
+
+strong {
+  color: yellow;
+}
+
+.splash-text {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.hidden {
+  visibility: hidden;
+}
+
+.lose-splash, .win-splash, .level-splash {
+  visibility: hidden;
+  background: #222;
+  transition: .15s all;
+  display: flex;
+  align-items: center;
+}

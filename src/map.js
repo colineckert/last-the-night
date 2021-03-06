@@ -6,6 +6,7 @@ module.exports = {
         [0, 0.35, 0.2, 0.4],
         [0.2, 0.15, 0.25, 0.4],
         [0.2, 0.15, 0.75, 0.2],
+        [0.4, 0.45, 0.45, 0.6],
         [0, 0.6, 0.6, 0.65],
         [0.7, 0.2, 0.75, 1],
         [0.5, 0.65, 0.55, 1]
@@ -15,6 +16,8 @@ module.exports = {
         { x: .40, y: .25, active: false },
         { x: .60, y: .67, active: false }
       ],
+      level_header: "BUT HMMM...  WHAT'S THIS...?",
+      level_header_2: "THE NEXT FLOOR IS HUGE! YOU'LL NEED TO CLAP MUCH MORE TO FIND YOUR WAY..."
     }
   }
 } 
