@@ -41,6 +41,7 @@ const pass = () => {
   });
 
   level += 1;
+  // battery.value = 1000;
   setTimeout(() => {
     document.addEventListener("keydown", launch)
   }, 2000);
@@ -51,6 +52,7 @@ const win = () => {
   winSplash.style.visibility = "visible";
   
   level = 1;
+  // battery.value = 1000;
   setTimeout(() => {
     document.addEventListener("keydown", launch)
   }, 2000);

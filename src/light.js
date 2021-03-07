@@ -7,7 +7,12 @@ class Light {
     this.a = 300;
     this.b = this.a / 2;
     this.c = Math.sqrt((this.a * this.a) + (this.b * this.b));
+    // this.active = true;
   }
+
+  // toggleLight() {
+  //   this.active ? this.active = false : this.active = true;
+  // }
   
   update(mouseX, mouseY) {
     this.cursPos.x = mouseX;
@@ -231,24 +236,18 @@ class Light {
     gradient.addColorStop(0, "white");
     gradient.addColorStop(1, 'transparent');
 
-    // Set the fill style and draw a rectangle
     ctx.globalAlpha = 0.7;
-    ctx.fillStyle = gradient;
-    // ctx.fillStyle = "white";
+
+    // if (!this.active) {
+    //   ctx.fillStyle = "black"
+    // } else {
+      ctx.fillStyle = gradient;
+    // }
+    
     ctx.fill();
     
     // reset transform
     ctx.setTransform(1, 0, 0, 1, 0, 0);
-
-    // // the line
-    // ctx.beginPath();
-    // ctx.moveTo(this.cursPos.x, this.cursPos.y);
-    // ctx.lineTo(x_midpoint, y_midpoint);
-
-    // ctx.lineWidth = 2;
-    // ctx.setLineDash([2, 5]);
-    // ctx.strokeStyle = "#315659";
-    // ctx.stroke();
   }
 }
 

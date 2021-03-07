@@ -12,7 +12,8 @@ class GameView {
     this.passCallback = passCallback;
     this.winningCallback = winningCallback;
     this.losingCallback = losingCallback;
-    this.setMusic()
+    this.setMusic();
+    // this.updateBattery();
   };
 
   setMusic() {
@@ -22,6 +23,15 @@ class GameView {
       autoplay: true });
     this.pianoMusic.volume(0.5);
   }
+
+  // updateBattery() {
+  //   let battery = document.getElementById('battery');
+  //   setInterval(() => {
+  //     battery.value -= 50;
+  //   }, 1000);
+
+  //   if (battery.value === 0) this.light.toggleLight();
+  // }
 
   // control bindings
   bindControlHandlers() {
@@ -95,9 +105,6 @@ class GameView {
 
     this.game.step();
     this.game.draw(this.ctx);
-
-    this.playerEscaped();
-    this.playerKilled();
     
     if (this.playerEscaped()) {
       if (this.level <= 5) {

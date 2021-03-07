@@ -76,7 +76,7 @@ class Game {
     const light = this.light;
     return this.ghosts.some( ghost => {
       if (light.revealed(ghost.pos.x, ghost.pos.y)) {
-        setTimeout(() => ghost.activate(), 2000);
+        setTimeout(() => ghost.activate(), 1000);
       }
     })
   }
