@@ -47,16 +47,9 @@ class Game {
   }
 
   draw(ctx) {
-    // ctx.clearRect(0, 0, Game.DIM_X, Game.DIM_Y);
-    // ctx.fillStyle = Game.BG_COLOR;
-    // ctx.fillRect(0, 0, Game.DIM_X, Game.DIM_Y);
-    
     this.allObjects().forEach(object => {
       object.draw(ctx);
     });
-
-    // this.walls.forEach(wall => wall.draw(ctx));
-    // this.ghosts.forEach(ghost => ghost.draw(ctx));
   }
 
   collidingWithWall(coord){

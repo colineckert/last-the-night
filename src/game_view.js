@@ -12,7 +12,7 @@ class GameView {
     this.passCallback = passCallback;
     this.winningCallback = winningCallback;
     this.losingCallback = losingCallback;
-    this.setMusic();
+    this.setMusic()
   };
 
   setMusic() {

@@ -1,5 +1,6 @@
 const GameView = require('./game_view');
 const Map = require('./map');
+const MusicPlayer = require('./music');
 
 // Initialize canvas and display splash
 document.addEventListener("DOMContentLoaded", () => {
@@ -14,6 +15,17 @@ document.addEventListener("DOMContentLoaded", () => {
   const ctx = canvas.getContext("2d");
   ctx.fillStyle = "#000";
   ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+  // Bind our player controls.
+  const playBtn = document.getElementById('playBtn')
+  playBtn.addEventListener('click', function() {
+    MusicPlayer.play();
+  });
+
+  const pauseBtn = document.getElementById('pauseBtn')
+  pauseBtn.addEventListener('click', function() {
+    MusicPlayer.pause();
+  });
   
 });
 
