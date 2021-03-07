@@ -77,14 +77,7 @@ class Game {
     // let revealed;
     return this.ghosts.some( ghost => {
       if (light.revealed(ghost.pos.x, ghost.pos.y)) {
-        // ghost.activate(), 5000;
         setTimeout(() => ghost.activate(), 2000);
-      // } else {
-        // clearTimeout(revealed);
-      // } else {
-      //   setTimeout(() => {
-      //     if(ghost.active) ghost.active = false
-      //   }, 1000);
       }
     })
   }
