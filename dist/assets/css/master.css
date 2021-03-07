@@ -80,10 +80,6 @@ strong {
   justify-content: space-between;
 }
 
-.hidden {
-  visibility: hidden;
-}
-
 .lose-splash, .win-splash, .level-splash {
   visibility: hidden;
   background: #000;

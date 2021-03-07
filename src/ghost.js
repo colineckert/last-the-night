@@ -54,6 +54,6 @@ class Ghost{
 
 }
 
-Ghost.SPEED = 0.8;
+Ghost.SPEED = 1;
 
 module.exports = Ghost;
