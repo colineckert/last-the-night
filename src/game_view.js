@@ -1,4 +1,5 @@
 const Game = require('./game');
+const { Howl, Howler } = require("howler");
 
 class GameView {
   constructor(canvas, level, passCallback, winningCallback, losingCallback) {
@@ -11,7 +12,16 @@ class GameView {
     this.passCallback = passCallback;
     this.winningCallback = winningCallback;
     this.losingCallback = losingCallback;
+    this.setMusic();
   };
+
+  setMusic() {
+    this.pianoMusic = new Howl({ 
+      src: ['../dist/assets/piano_music.mp3'], 
+      loop: true,
+      autoplay: true });
+    this.pianoMusic.volume(0.8);
+  }
 
   // key bindings
   bindControlHandlers() {

@@ -9,7 +9,7 @@ class Ghost{
   }
 
   draw(ctx){
-    ctx.fillStyle = '#fff';
+    ctx.fillStyle = '#000';
     ctx.fillRect(this.pos.x, this.pos.y, 15, 15);
   }
 

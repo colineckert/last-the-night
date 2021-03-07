@@ -1,8 +1,6 @@
 const GameView = require('./game_view');
 const Map = require('./map');
 
-
-
 // Initialize canvas and display splash
 document.addEventListener("DOMContentLoaded", () => {
   console.log("Try to Last the Night");

@@ -13,7 +13,7 @@ module.exports = {
       ],
       playerStart: {x: .05, y: .50},
       level_header: "But wait... I'm still trapped!",
-      level_header_2: "I need to keep searching for the way out."
+      level_header_2: "I need to keep searching for a way out of this darkness."
     },
     2: {
     walls: [
@@ -164,5 +164,5 @@ module.exports = {
   }
 } 
   
-window.wallColor = { color: "#fff" };
-// window.wallColor = { color: "#000" };
+// window.wallColor = { color: "#fff" };
+window.wallColor = { color: "#000" };
