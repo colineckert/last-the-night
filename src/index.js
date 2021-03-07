@@ -16,7 +16,7 @@ document.addEventListener("DOMContentLoaded", () => {
   ctx.fillRect(0, 0, canvas.width, canvas.height);
 });
 
-let level = 6;
+let level = 1;
 
 const launch = () => {
   const splashes = document.querySelectorAll('.splash');
