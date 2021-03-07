@@ -227,7 +227,7 @@ class Light {
     ctx.closePath();
 
     // Add gradient and color stops
-    let gradient = ctx.createLinearGradient(30,0, 250,0);
+    let gradient = ctx.createLinearGradient(50,0, 250,0);
     gradient.addColorStop(0, "white");
     gradient.addColorStop(1, 'transparent');
 

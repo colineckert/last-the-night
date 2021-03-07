@@ -1,4 +1,5 @@
 const GameView = require('./game_view');
+const Map = require('./map');
 
 // Initialize canvas and display splash
 document.addEventListener("DOMContentLoaded", () => {
@@ -16,33 +17,50 @@ document.addEventListener("DOMContentLoaded", () => {
   
 });
 
-let level = 1;
+let level = 6;
 
-function win() {
-  const winSplash = document.getElementById('win-splash');
-  // const victoryLine = document.getElementById('level-victory');
-  // victoryLine.innerHTML = `YOU HAVE BEATEN LEVEL ${level}`;
-  winSplash.style.visibility = "visible";
-  level = 1;
-  setTimeout( () => {
-    document.addEventListener("keydown", launch)
-  }, 2000);
-}
-
-function lose() {
-  const loseSplash = document.getElementById('lose-splash');
-  loseSplash.style.visibility = "visible";
-  setTimeout( () => {
-    document.addEventListener("keydown", launch)
-  }, 2000);
-}
-
-function launch() {
+const launch = () => {
   const splashes = document.querySelectorAll('.splash');
   for (let splash of splashes) {
     splash.style.visibility = "hidden";
   }
-  window.GameView = new GameView(canvas, level, win, lose);
+  window.GameView = new GameView(canvas, level, pass, win, lose);
   window.GameView.start();
   document.removeEventListener("keydown", launch);
 } 
+
+const pass = () => {
+  const levelSplash = document.getElementById('level-splash');
+  levelSplash.style.visibility = "visible";
+
+  const victoryLine = document.getElementById('level-victory');
+  victoryLine.innerHTML = `YOU HAVE BEATEN LEVEL ${level}`;
+
+  ['level_header', 'level_header_2'].forEach(id => {
+    let el = document.getElementById(id);
+    el.innerHTML = Map.LEVELS[level][id];
+  });
+
+  level += 1;
+  setTimeout(() => {
+    document.addEventListener("keydown", launch)
+  }, 2000);
+}
+
+const win = () => {
+  const winSplash = document.getElementById('win-splash');
+  winSplash.style.visibility = "visible";
+  
+  level = 1;
+  setTimeout(() => {
+    document.addEventListener("keydown", launch)
+  }, 2000);
+}
+
+const lose = () => {
+  const loseSplash = document.getElementById('lose-splash');
+  loseSplash.style.visibility = "visible";
+  setTimeout(() => {
+    document.addEventListener("keydown", launch)
+  }, 2000);
+}

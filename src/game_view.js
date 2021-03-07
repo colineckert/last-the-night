@@ -1,13 +1,14 @@
 const Game = require('./game');
 
 class GameView {
-  constructor(canvas, level, winningCallback, losingCallback) {
+  constructor(canvas, level, passCallback, winningCallback, losingCallback) {
     this.canvas = canvas;
     this.ctx = canvas.getContext("2d");
     this.game = new Game(canvas, level);
     this.level = level;
     this.player = this.game.player;
     this.light = this.game.light;
+    this.passCallback = passCallback;
     this.winningCallback = winningCallback;
     this.losingCallback = losingCallback;
   };
@@ -21,10 +22,6 @@ class GameView {
     window.addEventListener("keyup", (e) => {
       GameView.KEYS[e.key] = false;
     });
-
-    // window.addEventListener("click", (e) => {
-    //   this.player.lightPulse(); 
-    // });
       
     this.canvas.addEventListener("mousemove",(e) => { 
       this.setMousePosition(this.canvas, e); 
@@ -93,11 +90,11 @@ class GameView {
     this.playerKilled();
     
     if (this.playerEscaped()) {
-      // if (this.level <= 5) {
-      //   this.passCallback();
-      // } else {
+      if (this.level <= 5) {
+        this.passCallback();
+      } else {
         this.winningCallback();
-      // }
+      }
     } else if (this.playerKilled()){
       this.losingCallback();
     } else {
