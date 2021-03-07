@@ -4,7 +4,7 @@ class Light {
   constructor(player) {
     this.player = player;
     this.cursPos = new Coord(player.pos.x, player.pos.y);
-    this.a = 200;
+    this.a = 300;
     this.b = this.a / 2;
     this.c = Math.sqrt((this.a * this.a) + (this.b * this.b));
   }
@@ -227,7 +227,7 @@ class Light {
     ctx.closePath();
 
     // Add gradient and color stops
-    let gradient = ctx.createLinearGradient(50,0, 250,0);
+    let gradient = ctx.createLinearGradient(100,0, 370,0);
     gradient.addColorStop(0, "white");
     gradient.addColorStop(1, 'transparent');
 
