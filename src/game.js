@@ -74,7 +74,6 @@ class Game {
 
   revealGhost(){
     const light = this.light;
-    // let revealed;
     return this.ghosts.some( ghost => {
       if (light.revealed(ghost.pos.x, ghost.pos.y)) {
         setTimeout(() => ghost.activate(), 2000);
@@ -101,10 +100,5 @@ class Game {
   }
 
 }
-
-Game.BG_COLOR = "#000";
-Game.DIM_X = 1300;
-Game.DIM_Y = 800;
-Game.FPS = 32;
 
 module.exports = Game;

@@ -52,12 +52,8 @@ class Ghost{
     }
   }
 
-
-  sleep(ms) {
-    return new Promise((resolve) => setTimeout(resolve, ms));
-  }
 }
 
-Ghost.SPEED = 0.7;
+Ghost.SPEED = 0.8;
 
 module.exports = Ghost;

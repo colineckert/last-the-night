@@ -47,7 +47,7 @@ module.exports = {
       ],
       playerStart: {x: .45, y: .07},
       level_header: "OK, I think I know how to find my way now...",
-      level_header_2: "But what was that? I thought I saw a shadow move over there..."
+      level_header_2: "Wait, what was that over there? Did that shadow move...?"
     },
     3: {
       walls: [
@@ -67,8 +67,8 @@ module.exports = {
         {x: .76, y: .8, active: true},
         {x: .7, y: .15, active: true},
       ],
-      level_header: "Whew, glad they couldn't reach me. I think I'm getting close to escaping.",
-      level_header_2: "But I hope there's no more of those shadows..."
+      level_header: "Whew, glad they couldn't reach me. Maybe I'm getting close to escaping.",
+      level_header_2: "I just hope there's no more of those shadows..."
     },
     4: {
       walls: [
@@ -82,8 +82,8 @@ module.exports = {
         {x: .35, y: .55},
         {x: .67, y: .38}
       ],
-      level_header: "That was close! I need to be more careful. Wait...",
-      level_header_2: "It just got really cold in here... I think I'm in trouble..."
+      level_header: "That was close! I need to be more careful.",
+      level_header_2: "Argh! It just got really cold in here..."
     },
     5: {
       walls: [
@@ -155,6 +155,7 @@ module.exports = {
         {x: .18, y: .72},
         {x: .17, y: .75},
         {x: .16, y: .72},
+        {x: .17, y: .74},
         {x: .17, y: .7},
         {x: .94, y: .93},
         {x: .96, y: .94},

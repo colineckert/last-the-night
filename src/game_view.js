@@ -20,10 +20,10 @@ class GameView {
       src: ['../dist/assets/piano_music.mp3'], 
       loop: true,
       autoplay: true });
-    this.pianoMusic.volume(0.8);
+    this.pianoMusic.volume(0.5);
   }
 
-  // key bindings
+  // control bindings
   bindControlHandlers() {
     window.addEventListener("keydown", (e) => {
       GameView.KEYS[e.key] = true;
@@ -111,7 +111,6 @@ class GameView {
       // every call to animate requests causes another call to animate
       requestAnimationFrame(this.animate.bind(this));
     }
-    // requestAnimationFrame(this.animate.bind(this));
   }
 };
 
