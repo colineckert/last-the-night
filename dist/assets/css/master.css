@@ -101,3 +101,13 @@ strong {
   background: #ddd;
   border-radius: 5px;
 }
+
+.volume-button {
+  font-size: 24px;
+  transition: .3s color ease-in-out;
+  cursor: pointer;
+}
+
+.volume-button:hover {
+  color: yellow;
+}

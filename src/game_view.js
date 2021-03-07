@@ -1,5 +1,5 @@
 const Game = require('./game');
-const { Howl, Howler } = require("howler");
+// const { Howl, Howler } = require("howler");
 
 class GameView {
   constructor(canvas, level, passCallback, winningCallback, losingCallback) {
@@ -12,17 +12,17 @@ class GameView {
     this.passCallback = passCallback;
     this.winningCallback = winningCallback;
     this.losingCallback = losingCallback;
-    this.setMusic();
+    // this.setMusic();
     // this.updateBattery();
   };
 
-  setMusic() {
-    this.pianoMusic = new Howl({ 
-      src: ['../dist/assets/docs/piano_music.mp3'], 
-      loop: true,
-      autoplay: true });
-    this.pianoMusic.volume(0.5);
-  }
+  // setMusic() {
+  //   this.pianoMusic = new Howl({ 
+  //     src: ['../dist/assets/docs/piano_music.mp3'], 
+  //     loop: true,
+  //     autoplay: true });
+  //   this.pianoMusic.volume(0.5);
+  // }
 
   // updateBattery() {
   //   let battery = document.getElementById('battery');
@@ -99,6 +99,8 @@ class GameView {
   }
 
   animate() {
+    document.getElementById('piano-music').play();
+
     this.dirKeys();
     this.ctx.fillStyle = "#000";
     this.ctx.fillRect(0, 0, this.canvas.width, this.canvas.height);
