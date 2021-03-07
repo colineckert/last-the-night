@@ -18,7 +18,7 @@ class GameView {
 
   setMusic() {
     this.pianoMusic = new Howl({ 
-      src: ['../dist/assets/piano_music.mp3'], 
+      src: ['../dist/assets/docs/piano_music.mp3'], 
       loop: true,
       autoplay: true });
     this.pianoMusic.volume(0.5);
