@@ -103,7 +103,7 @@ strong {
 }
 
 .volume-button {
-  font-size: 24px;
+  font-size: 22px;
   transition: .3s color ease-in-out;
   cursor: pointer;
 }
