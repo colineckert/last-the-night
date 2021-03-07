@@ -43,7 +43,7 @@ class GameView {
       GameView.KEYS[e.key] = false;
     });
       
-    this.canvas.addEventListener("mousemove",(e) => { 
+    window.addEventListener("mousemove",(e) => { 
       this.setMousePosition(this.canvas, e); 
     }); 
   } 

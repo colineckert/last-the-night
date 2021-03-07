@@ -117,8 +117,8 @@ module.exports = {
         {x: .5, y: .9},
         {x: .9, y: .9}
       ],
-      level_header: "Will I ever escape this darkness!?",
-      level_header_2: "But what's this... A small ray of light..? Could it be...?"
+      level_header: "Will I ever escape this darkness?!",
+      level_header_2: "But what's this... A small ray of light..? Could it be the end...?"
     },
     6: {
       walls: [

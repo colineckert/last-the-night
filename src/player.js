@@ -8,7 +8,10 @@ class Player {
 
   draw(ctx){
     ctx.fillStyle = "#fff";
-    ctx.fillRect(this.pos.x, this.pos.y, 7, 7);
+    ctx.beginPath();
+    ctx.arc(this.pos.x, this.pos.y, 5, 0, 2 * Math.PI);
+    ctx.fill();
+    // ctx.fillRect(this.pos.x, this.pos.y, 7, 7);
   }
 
   move(dir) {

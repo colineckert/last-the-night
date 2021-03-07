@@ -33,7 +33,7 @@ const pass = () => {
   levelSplash.style.visibility = "visible";
 
   const victoryLine = document.getElementById('level-victory');
-  victoryLine.innerHTML = `YOU HAVE BEATEN LEVEL ${level}`;
+  victoryLine.innerHTML = `LEVEL ${level} SURVIVED`;
 
   ['level_header', 'level_header_2'].forEach(id => {
     let el = document.getElementById(id);
