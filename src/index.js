@@ -1,6 +1,8 @@
 const GameView = require('./game_view');
 const Map = require('./map');
 
+
+
 // Initialize canvas and display splash
 document.addEventListener("DOMContentLoaded", () => {
   console.log("Try to Last the Night");
@@ -17,7 +19,7 @@ document.addEventListener("DOMContentLoaded", () => {
   
 });
 
-let level = 6;
+let level = 1;
 
 const launch = () => {
   const splashes = document.querySelectorAll('.splash');
