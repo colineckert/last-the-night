@@ -6,13 +6,13 @@ A browser based game that integrates an object-oriented Javascript game structur
 ![gameplay screenshot](https://github.com/colineckert/last-the-night/blob/main/dist/assets/docs/game-screenshot.png)
 
 ## Gameplay
-You find yourself waking in a dark, mysterious place with only a flashlight to find your way. As you try to navigate and escape darkness, eerie shadows haunt your footsteps. 
+You find yourself waking in a dark, mysterious place with only a flashlight to find your way. As you try to navigate and escape darkness, eerie shadows haunt your footsteps and try to engulf you in darkness. 
 
 Can you last the night?
 
 ## Implementation
 
-### Basic Rendering
+### Game Rendering
 A `GameView` class renders the game, using a `requestAnimationFrame` loop. 
 
 ```js
