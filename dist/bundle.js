@@ -304,20 +304,12 @@ var GameView = /*#__PURE__*/function () {
     this.light = this.game.light;
     this.passCallback = passCallback;
     this.winningCallback = winningCallback;
-    this.losingCallback = losingCallback; // this.setMusic();
-    // this.updateBattery();
+    this.losingCallback = losingCallback; // this.updateBattery();
   }
 
   _createClass(GameView, [{
     key: "bindControlHandlers",
-    value: // setMusic() {
-    //   this.pianoMusic = new Howl({ 
-    //     src: ['../dist/assets/docs/piano_music.mp3'], 
-    //     loop: true,
-    //     autoplay: true });
-    //   this.pianoMusic.volume(0.5);
-    // }
-    // updateBattery() {
+    value: // updateBattery() {
     //   let battery = document.getElementById('battery');
     //   setInterval(() => {
     //     battery.value -= 50;
@@ -368,8 +360,7 @@ var GameView = /*#__PURE__*/function () {
     value: function setMousePosition(canvas, event) {
       var rect = canvas.getBoundingClientRect();
       var mouseX = event.clientX - rect.left;
-      var mouseY = event.clientY - rect.top; // requestAnimationFrame(this.light.update(mouseX, mouseY));
-
+      var mouseY = event.clientY - rect.top;
       this.light.update(mouseX, mouseY);
     }
   }, {
@@ -411,7 +402,6 @@ var GameView = /*#__PURE__*/function () {
       } else if (this.playerKilled()) {
         this.losingCallback();
       } else {
-        // every call to animate requests causes another call to animate
         requestAnimationFrame(this.animate.bind(this));
       }
     }
@@ -714,8 +704,7 @@ var Light = /*#__PURE__*/function () {
         } // slanted rectangle  
         else {
             // calculate slope of the side  
-            var m = (p.x - q.x) / (q.y - p.y); // let m = this.findReciprocalSlope();
-            // calculate displacements along axes  
+            var m = (p.x - q.x) / (q.y - p.y); // calculate displacements along axes  
 
             var dx = l / Math.sqrt(1 + m * m) * 0.5;
             var dy = m * dx;
@@ -746,9 +735,8 @@ var Light = /*#__PURE__*/function () {
           b.x = q.x;
         } // slanted rectangle  
         else {
-            // calculate slope of the side  
-            var m = (p.x - q.x) / (q.y - p.y); // let m = this.findReciprocalSlope();
-            // calculate displacements along axes  
+            // calculate slope of the side (reciprecol of cursor slope)
+            var m = (p.x - q.x) / (q.y - p.y); // calculate displacements along axes  
 
             var dx = l / Math.sqrt(1 + m * m) * 0.5;
             var dy = m * dx;

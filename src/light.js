@@ -123,7 +123,6 @@ class Light {
     { 
       // calculate slope of the side  
       let m = (p.x - q.x) / (q.y - p.y); 
-      // let m = this.findReciprocalSlope();
 
       // calculate displacements along axes  
       let dx = ((l / Math.sqrt(1 + (m * m))) * 0.5); 
@@ -164,9 +163,8 @@ class Light {
     // slanted rectangle  
     else 
     { 
-      // calculate slope of the side  
+      // calculate slope of the side (reciprecol of cursor slope)
       let m = (p.x - q.x) / (q.y - p.y); 
-      // let m = this.findReciprocalSlope();
 
       // calculate displacements along axes  
       let dx = ((l / Math.sqrt(1 + (m * m))) * 0.5); 

@@ -12,17 +12,8 @@ class GameView {
     this.passCallback = passCallback;
     this.winningCallback = winningCallback;
     this.losingCallback = losingCallback;
-    // this.setMusic();
     // this.updateBattery();
   };
-
-  // setMusic() {
-  //   this.pianoMusic = new Howl({ 
-  //     src: ['../dist/assets/docs/piano_music.mp3'], 
-  //     loop: true,
-  //     autoplay: true });
-  //   this.pianoMusic.volume(0.5);
-  // }
 
   // updateBattery() {
   //   let battery = document.getElementById('battery');
@@ -76,7 +67,6 @@ class GameView {
     let mouseX = event.clientX - rect.left; 
     let mouseY = event.clientY - rect.top;
 
-    // requestAnimationFrame(this.light.update(mouseX, mouseY));
     this.light.update(mouseX, mouseY);
   }
 
@@ -117,7 +107,6 @@ class GameView {
     } else if (this.playerKilled()){
       this.losingCallback();
     } else {
-      // every call to animate requests causes another call to animate
       requestAnimationFrame(this.animate.bind(this));
     }
   }
