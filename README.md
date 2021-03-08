@@ -111,6 +111,7 @@ findTriTop() {
   let t = new Coord(0, 0);
   let m = this.findCursorSlope();
   
+  // if player position is behind light
   if (pX <= this.cursPos.x) {
     // Slope is 0
     if (m == 0)
@@ -135,6 +136,7 @@ findTriTop() {
     // Return top of tri
     return t;
   } else {
+    // player is positioned behind light
     ...
   }
 }
