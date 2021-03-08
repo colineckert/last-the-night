@@ -1,7 +1,7 @@
 # Last the Night
 A browser based game that integrates an object-oriented Javascript game structure with the fast rendering of HTML5 canvas to create an engaging and haunting experience for players. 
 
-Play here
+[Play now](https://colineckert.github.io/last-the-night/)
 
 ![gameplay screenshot](https://github.com/colineckert/last-the-night/blob/main/dist/assets/docs/game-screenshot.png)
 
