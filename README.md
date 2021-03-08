@@ -94,7 +94,7 @@ update(mouseX, mouseY) {
   this.cursPos.y = mouseY;
 }
 ```
-- The flashlight needed to be bound to and rotate around the player. Monitoring and updating the player position, as well as the positions of the light triangle's other two corners, meant I needed to capture three coordinates of a constatly moving triangle in real-time. I could easily maintain the player's position, and was able to accomplish capturing the coordinates of the other corners using geometry and trigonometry. By calculating the slope and length of the line between the cursor and player coordinates, it's recipricol line, and the midpoint of the side opposite the player, I could find the corner coordinates.  
+- The flashlight needed to be bound to and rotate around the player. Monitoring and updating the player position, as well as the positions of the light triangle's other two corners, meant I needed to capture three coordinates of a constatly moving triangle in real-time. I could easily maintain the player's position, and was able to accomplish capturing the coordinates of the other corners with geometry and trigonometry. By calculating the slope and length of the line between the cursor and player coordinates, it's recipricol line, and the midpoint of the side opposite the player, I could find the corner coordinates.  
 
 ```js
 findCursorSlope() {
