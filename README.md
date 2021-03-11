@@ -1,18 +1,18 @@
 # Last the Night
 A browser based game that integrates an object-oriented Javascript game structure with the fast rendering of HTML5 canvas to create an engaging and haunting experience for players. 
 
-Play here
+[Play now](https://colineckert.github.io/last-the-night/)
 
-![gameplay screenshot]
+![gameplay screenshot](https://github.com/colineckert/last-the-night/blob/main/dist/assets/docs/game-screenshot.png)
 
 ## Gameplay
-You find yourself waking in a dark, mysterious place with only a flashlight to find your way. As you try to navigate and escape darkness, eerie shadows haunt your footsteps. 
+You find yourself waking in a dark, mysterious place with only a flashlight to find your way. As you try to navigate and escape darkness, eerie shadows haunt your footsteps and try to engulf you in darkness. 
 
 Can you last the night?
 
 ## Implementation
 
-### Basic Rendering
+### Game Rendering
 A `GameView` class renders the game, using a `requestAnimationFrame` loop. 
 
 ```js
@@ -94,7 +94,7 @@ update(mouseX, mouseY) {
   this.cursPos.y = mouseY;
 }
 ```
-- The flashlight needed to be bound to and rotate around the player. Monitoring and updating the player position, as well as the positions of the light triangle's other two corners, meant I needed to capture three coordinates of a constatly moving triangle in real-time. I could easily maintain the player's position, and was able to accomplish capturing the coordinates of the other corners using geometry and trigonometry. By calculating the slope and length of the line between the cursor and player coordinates, it's recipricol line, and the midpoint of the side opposite the player, I could find the corner coordinates.  
+- The flashlight needed to be bound to and rotate around the player. Monitoring and updating the player position, as well as the positions of the light triangle's other two corners, meant I needed to capture three coordinates of a constatly moving triangle in real-time. I could easily maintain the player's position, and was able to accomplish capturing the coordinates of the other corners with geometry and trigonometry. By calculating the slope and length of the line between the cursor and player coordinates, it's recipricol line, and the midpoint of the side opposite the player, I could find the corner coordinates.  
 
 ```js
 findCursorSlope() {
@@ -111,6 +111,7 @@ findTriTop() {
   let t = new Coord(0, 0);
   let m = this.findCursorSlope();
   
+  // if player position is behind light
   if (pX <= this.cursPos.x) {
     // Slope is 0
     if (m == 0)
@@ -135,6 +136,7 @@ findTriTop() {
     // Return top of tri
     return t;
   } else {
+    // player is positioned behind light
     ...
   }
 }
